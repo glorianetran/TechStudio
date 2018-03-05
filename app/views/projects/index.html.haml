@@ -1,0 +1,15 @@
+-#  This file is app/views/movies/index.html.haml
+%h1 All Projects
+
+%table#projects
+  %thead
+    %tr
+      %th Title
+      %th Creator
+      %th Description
+  %tbody
+    - @projects.each do |p|
+      %tr
+        %td= p.title 
+        %td= p.creator
+        %td= p.description
