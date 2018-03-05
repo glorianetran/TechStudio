@@ -5,3 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+tech_studio = Project.create! title: "Tech Studio", creator: "Team Make It Work", description: "First attempt at succeeding."
+
