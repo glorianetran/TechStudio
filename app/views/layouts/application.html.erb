@@ -8,7 +8,31 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+
+    <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">TechStudio</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="/pages/home">Home</a></li>
+      <li><a href="/pages/about">About</a></li>
+      <li><a href="#">Projects</a></li>
+    </ul>
+  </div>
+</nav>
+
+  
+
   <body>
     <%= yield %>
   </body>
+  
+  
+      <!-- Footer -->
+    <footer>
+      <div class="container text-center">
+        <p>Copyright &copy; Your Website 2018</p>
+      </div>
+    </footer>
 </html>
