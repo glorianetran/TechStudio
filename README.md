@@ -1,6 +1,6 @@
 # TechStudio
 
-https://tech-studio.herokuapp.com/
+Heroku link: https://tech-studio.herokuapp.com/
 
 ### What is Tech Studio?
 
@@ -12,7 +12,15 @@ TechStudio was created for a Software Engineering course at Mills College. We wa
 * Gloriane Tran https://github.com/glorianetran
 * Regina Wang https://github.com/reginayiwang
 
+### Viewing our Repo
+1. Clone Repository into your environment.
+2. In the TechStudio directory run `bundle install`
+3. To Populate the database
+  * First run ```rails db:migrate```
+  * Then ```rails db:seed```
+
 ### Project Details
 * Rails Version: 5.1.5
+* Ruby Version: 2.4.0
 * BootStrap: Twitter Bootstrap, BootStrap sass
 * Third-Party User Authentication: Google
