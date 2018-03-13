@@ -1,5 +1,7 @@
 # TechStudio
 
+https://tech-studio.herokuapp.com/
+
 ### What is Tech Studio?
 
 TechStudio was created for a Software Engineering course at Mills College. We wanted to create a place to foster interdisciplinary tech.
@@ -12,6 +14,5 @@ TechStudio was created for a Software Engineering course at Mills College. We wa
 
 ### Project Details
 * Rails Version: 5.1.5
-* BootStrap: Twitter Bootstrap
+* BootStrap: Twitter Bootstrap, BootStrap sass
 * Third-Party User Authentication: Google
-
