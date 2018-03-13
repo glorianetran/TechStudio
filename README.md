@@ -2,11 +2,11 @@
 
 Heroku link: https://tech-studio.herokuapp.com/
 
-### What is Tech Studio?
+### What is TechStudio?
 
-TechStudio was created for a Software Engineering course at Mills College. We wanted to create a place to foster interdisciplinary tech.
+TechStudio was created for a Software Engineering course at Mills College in 2018. We wanted to create a place to foster interdisciplinary tech projects.
 
-### Tech Studio Members
+### TechStudio Members
 * Deana Bui https://github.com/deanabui
 * Natasha Culbreth https://github.com/LesForcesDuMal
 * Gloriane Tran https://github.com/glorianetran
