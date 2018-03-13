@@ -1,5 +1,3 @@
-# README
-
 ## What is Tech Studio?
 
 TechStudio was created for a Software Engineering course at Mills College. We wanted to create a place to foster interdisciplinary tech.
