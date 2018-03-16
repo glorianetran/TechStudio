@@ -1,0 +1,28 @@
+<% #  This file is app/views/movies/index.html.haml %>
+<center><h1>All Projects</h1></center>
+<center>
+<table id="projects">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Creator</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @projects.each do |p| %>
+      <tr>
+        <td>
+          <%= p.title  %>
+        </td>
+        <td>
+          <%= p.creator %>
+        </td>
+        <td>
+          <%= p.description %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</center>
