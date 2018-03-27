@@ -1,0 +1,43 @@
+<% #  This file is app/views/movies/index.html.haml %>
+    <!-- Header -->
+<div style="height:10em;" class="span12">
+</div>
+
+
+    <!-- Header -->
+    <header>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h2 class="section-heading text-uppercase">All Projects</h2>
+          </div>
+        </div>
+      </div>
+      </header>
+      
+<center>
+<table id="projects">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Creator</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @projects.each do |p| %>
+      <tr>
+        <td>
+          <%= p.title  %>
+        </td>
+        <td>
+          <%= p.creator %>
+        </td>
+        <td>
+          <%= p.description %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</center>
