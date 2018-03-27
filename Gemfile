@@ -9,6 +9,9 @@ end
 gem "therubyracer"
 gem "twitter-bootstrap-rails"
 
+# google authentication
+gem "omniauth-google-oauth2", "~> 0.2.1"
+
 gem 'haml'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.5'
