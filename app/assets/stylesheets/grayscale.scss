@@ -228,6 +228,13 @@ header.masthead {
 
 
 /* ---------- COLUMNS ---------- */
+h4.column-heading {
+  font-family: 'Inconsolata';
+  font-weight: bold;
+  font-size: 1.3em;
+  color: white;
+  margin-bottom: 2em;
+}
 h2.column-title {
   font-family: 'Inconsolata';
   font-weight: bold;
@@ -237,13 +244,6 @@ h2.column-title {
   margin-bottom: 2em;
 }
 
-h4.column-heading {
-  font-family: 'Inconsolata';
-  font-weight: bold;
-  font-size: 1.3em;
-  color: white;
-  margin-bottom: 2em;
-}
 @media (min-width: 1200px){
 .container-columns {
     width: 65%;
@@ -269,19 +269,19 @@ footer {
     font-size: 1em;
     margin: 0;
   }
+  position: relative;
+  bottom: 0;
+  width: 80%;
+  margin: auto;
+  margin-bottom: 2em;
+  margin-top: 2em;
 }
-@media (min-width: 1200px){
-  .row-footer {
-    margin-bottom: 2em;
-  }
+
+.row-footer {
+  position: absolute;
+  width: 100%;
 }
-@media (min-width: 1200px){
-  .container-footer {
-    width: 80%;
-    margin: auto;
-    margin-bottom: 2em;
-  }
-}
+
 .container-footer-right {
   text-align: right;
 }
