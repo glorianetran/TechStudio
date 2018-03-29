@@ -327,12 +327,22 @@ footer {
 
 .about-container-profile{
   margin: auto;
-  width: 55%;
+  width: 50%;
 }
-.about-profile-row{
+.about-profile{
   margin: auto;
+  margin-bottom: 4em;
+  column-count: 2;
+  column-gap: 1.5em;
 }
-.about-img-circle {
+.about-profile-img{
+  column-width: 20%; 
+}
+
+.about-profile-info-column{
+  text-align: left;
+}
+.about-img {
     border-radius: 2%;
     width: 10em;
 }
