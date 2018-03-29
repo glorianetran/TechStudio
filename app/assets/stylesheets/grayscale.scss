@@ -244,7 +244,6 @@ h4.column-heading {
   color: white;
   margin-bottom: 2em;
 }
-
 @media (min-width: 1200px){
 .container-columns {
     width: 65%;
@@ -254,12 +253,39 @@ h4.column-heading {
 }
 @media (min-width: 1200px){
 .row {
-    margin-right: -15px;
+    margin-right: -1em;
     margin-left: -1em;
 }
 }
 /* ---------- COLUMNS ---------- */
 
+
+
+
+
+/* ---------- FOOTER ---------- */
+footer {
+  p {
+    font-size: 1em;
+    margin: 0;
+  }
+}
+@media (min-width: 1200px){
+  .row-footer {
+    margin-bottom: 2em;
+  }
+}
+@media (min-width: 1200px){
+  .container-footer {
+    width: 80%;
+    margin: auto;
+    margin-bottom: 2em;
+  }
+}
+.container-footer-right {
+  text-align: right;
+}
+/* ---------- FOOTER ---------- */
 
 
 
@@ -279,22 +305,4 @@ img::selection {
 }
 img::-moz-selection {
   background: transparent;
-}
-
-
-
-
-
-
-footer {
-  p {
-    font-size: 1em;
-    margin: 0;
-  }
-}
-@media (min-width: 1200px){
-.container-footer {
-    width: 65%;
-    margin-bottom: 2em;
-}
 }
