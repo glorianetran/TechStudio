@@ -290,6 +290,60 @@ footer {
 
 
 
+
+/* ---------- ABOUT ---------- */
+.about-header {
+  margin-top: 10em;
+  text-align: center;
+  margin-bottom: 9em;
+  font-family: 'Inconsolata';
+}
+.about-heading {
+  font-size: 3em;
+  letter-spacing: 0.5em;
+  margin-bottom: 1em;
+}
+.about-text{
+  font-size: 1em;
+  letter-spacing: 0.2em;
+  line-height: 2.5em;
+  color: white;
+}
+
+
+  
+.about-team{
+  font-family: 'Inconsolata';
+  text-align: center
+}
+.about-subheading{
+  font-size: 1.25em;
+  letter-spacing: 0.2em;
+  line-height: 2.5em;
+  margin-bottom: 2em;
+}
+
+
+
+.about-container-profile{
+  margin: auto;
+  width: 55%;
+}
+.about-profile-row{
+  margin: auto;
+}
+.about-img-circle {
+    border-radius: 2%;
+    width: 10em;
+}
+
+/* ---------- ABOUT ---------- */
+
+
+
+
+
+
 ::-moz-selection {
   background: #fcfcfc;
   background: fade-out(white, .8);
