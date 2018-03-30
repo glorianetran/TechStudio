@@ -35,11 +35,11 @@ a {
   -moz-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
 
-  color: $emerald;
+  color: white;
   &:focus,
   &:hover {
     text-decoration: none;
-    color: darken($emerald, 20%);
+    color: darken($emerald, 50%);
   }
 }
 
@@ -50,35 +50,25 @@ a {
 /* ---------- NAVBAR ---------- */
 #mainNav {
   font-family: 'Source Sans Pro';
-  border-bottom: 1px solid fade-out(white, .7);
   background-color: black;
   .navbar-toggler {
     font-size: 1em;
-    padding: 11px;
+    padding: 1em;
     color: white;
-    border: 1px solid white;
   }
   .navbar-brand {
     font-size: 1.2em;
     font-weight: 700;
-    text-color: yellow;
     margin-left: -1em;
   }
-  a {
-    color: white;
+  
+  .navbar-nav{
+    float: left;
   }
-  .navbar-nav {
-    .nav-item {
-      -webkit-transition: background 0.3s ease-in-out;
-      -moz-transition: background 0.3s ease-in-out;
-      transition: background 0.3s ease-in-out;
-      &:hover {
-        color: fade($emerald, 20%);
-        outline: none;
-        background-color: black;
-      }
-    }
+  .navbar-right {
+    float: right;
   }
+  
   @media(min-width:992px) {
     padding-top: 20px;
     padding-bottom: 20px;
@@ -91,32 +81,28 @@ a {
     &.navbar-shrink {
       padding-top: 10px;
       padding-bottom: 10px;
-
-      border-bottom: 1px solid fade-out(white, .7);
       background: black;
-    }
-    .nav-link.active {
-      outline: none;
-      background-color: $dark;
-      &:hover {
-        color: $emerald;
-      }
     }
   }
 }
 
 .navbar-default {
-    background-color: $dark;
-    border-color: $dark;
-    font-size: 1.1em;      // changes navbar font size
+    background-color: $dark; // navbar color
+    border-color: $dark;    // narbar bottom border color
+    font-size: 1.15em;      // changes navbar font size
+    color: #848484;
 }
-    .nav-link.active {
-      outline: $emerald;
-      background-color: $dark;
-      &:hover {
-        color: $emerald;
-      }
-    }
+
+
+.navbar .brand, .navbar .nav > li > a:hover {
+    color: $emerald;
+    background-color: transparent;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #848484;
+}
+
 /* ---------- NAVBAR ---------- */    
 
 
@@ -389,3 +375,5 @@ img::selection {
 img::-moz-selection {
   background: transparent;
 }
+
+
