@@ -317,6 +317,10 @@ footer {
 
   
 .about-team{
+<<<<<<< HEAD
+=======
+  font-family: 'Inconsolata';
+>>>>>>> d761272b6121bb42da7fdb7d88087c2fd80b2ce6
   text-align: center
 }
 .about-subheading{
@@ -331,6 +335,7 @@ footer {
 .about-container-profile{
   margin: auto;
   width: 50%;
+<<<<<<< HEAD
   padding-bottom: 8em;
 }
 .about-profile{
@@ -362,17 +367,42 @@ footer {
 }
 
 
+=======
+}
+.about-profile{
+  margin: auto;
+  margin-bottom: 4em;
+  column-count: 2;
+  column-gap: 1.5em;
+}
+.about-profile-img{
+  column-width: 20%; 
+}
+
+.about-profile-info-column{
+  text-align: left;
+}
+.about-img {
+    border-radius: 2%;
+    width: 10em;
+}
+
+>>>>>>> d761272b6121bb42da7fdb7d88087c2fd80b2ce6
 /* ---------- ABOUT ---------- */
 
 
 
 
+<<<<<<< HEAD
 hr {
     display: block;
     height: 1px;
     border-top: 1px solid $emerald;
     padding: 0;
 }
+=======
+
+>>>>>>> d761272b6121bb42da7fdb7d88087c2fd80b2ce6
 
 ::-moz-selection {
   background: #fcfcfc;
