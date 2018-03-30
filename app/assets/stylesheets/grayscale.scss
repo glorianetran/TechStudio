@@ -21,6 +21,10 @@ html {
   height: 100%;
 }
 
+h1, h2, h3, h4, p {
+  margin: 0em;
+}
+
 p {
   font-size: 1em;
   line-height: 1.5;
@@ -313,7 +317,6 @@ footer {
 
   
 .about-team{
-  font-family: 'Inconsolata';
   text-align: center
 }
 .about-subheading{
@@ -328,31 +331,48 @@ footer {
 .about-container-profile{
   margin: auto;
   width: 50%;
+  padding-bottom: 8em;
 }
 .about-profile{
-  margin: auto;
-  margin-bottom: 4em;
-  column-count: 2;
-  column-gap: 1.5em;
-}
-.about-profile-img{
-  column-width: 20%; 
+  padding: 4em 2em;
+  overflow: hidden;
 }
 
-.about-profile-info-column{
-  text-align: left;
-}
 .about-img {
-    border-radius: 2%;
-    width: 10em;
+  border-radius: 2%;
+  width: 10em;
+  padding-bottom: .01em;
+  float: right;
 }
+
+.about-team, .about-name, .about-job, .about-body {
+  font-family: 'Inconsolata';
+}
+.about-name{
+  font-size: 2em;
+  padding-bottom: 0.25em;
+}
+.about-job{
+  font-size: 1.5em;
+  padding-bottom: 1em;
+}
+.about-body{
+  font-size: 1.1em;
+  padding-bottom: 1em;
+}
+
 
 /* ---------- ABOUT ---------- */
 
 
 
 
-
+hr {
+    display: block;
+    height: 1px;
+    border-top: 1px solid $emerald;
+    padding: 0;
+}
 
 ::-moz-selection {
   background: #fcfcfc;
