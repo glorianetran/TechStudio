@@ -1,12 +1,55 @@
 class ProjectsController < ApplicationController
 
   def index
-    @projects = Project.all
+    @projects = if params[:tag]
+      Project.tagged_with(params[:tag])
+    else
+      Project.all
+    end
   end
 
   def new
+    @project = Project.new
   end
 
   def show
+    id = params[:id]
+    @project = Project.find(id)
+  end
+  
+  def create
+    @project = Project.new(project_params)
+    if @project.save
+      flash[:notice] = "#{@movie.title} was successfully created."
+      redirect_to projects_path
+    else
+      render :new
+    end
+  end
+  
+  def edit
+    @project = Project.find(params[:id])
+  end
+  
+  def update 
+    @project = Project.find(params[:id])
+    if @project.update_attributes(project_params)
+      flash[:notice] = "#{@project.title} was successfully updated."
+      redirect_to project_path(@project)
+    else
+      render :edit
+    end
+  end
+  
+  def destroy
+    @project = Project.find(params[:id])
+    @project.destroy
+    flash[:notice] = "#{@project.title} was deleted."
+    redirect_to projects_path
+  end
+  
+  private
+  def project_params
+    params.require(:project).permit(:title, :creator, :description, :tag_list)
   end
 end
