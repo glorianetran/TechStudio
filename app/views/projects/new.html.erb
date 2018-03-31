@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<% #  This file is app/views/movies/index.html.haml %>
+    <!-- Header -->
+<div style="height:10em;" class="span12">
+</div>
+
+
+    <!-- Header -->
+    <header>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h2 class="section-heading text-uppercase">New Project</h2>
+          </div>
+        </div>
+      </div>
+      </header>
+
+
+
+
+    <div class="Absolute-Center is-Responsive">
+<form>
+  <div class="form-row centered">
+    <div class="form-group">
+      <label for="inputEmail4">Project Title</label>
+      <input type="text" class="form-control formFields" id="inputTitle" placeholder="The name of your awesome project!">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputSummary">Summary</label>
+    <input type="text" class="form-control formFields" id="inputSummary" placeholder="Short summary of your project (max 50 characters)" maxlength="50">
+  </div>
+  <div class="form-group">
+    <label for="inputDescription">Description</label>
+    <textarea class="form-control formFields" rows="5" placeholder="A longer description of your project (max 500 characters)" id="inputDescription" maxlength="500"></textarea>
+  </div>
+  <div class="form-row centered">
+    <div class="form-group">
+      <label for="inputProjectType">Project Type</label>
+      <select id="inputProjectType" class="form-control formFields">
+        <option selected>Hobby</option>
+        <option>Academic</option>
+        <option>Startup</option>
+      </select>
+    </div>
+      <div class="form-group">
+    <label for="inputTags">Tags</label>
+    <input type="text" class="form-control formFields" id="inputTags" placeholder="List of desired collaborator skills">
+  </div>
+  </div>
+  <center><button type="submit" class="btn-primary">Submit</button>
+</form>
+</div>
+
+</html>

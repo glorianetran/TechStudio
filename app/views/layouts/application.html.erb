@@ -8,8 +8,8 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-<!-- BEWARE:With the fixed-top nav bar, pages are cut off at the top, so added some padding in body to keep it in check -->
-  <nav class="navbar navbar-default  navbar-fixed-top">
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
       <div class="navbar-header">
         <a class="navbar-brand" href="#">TechStudio</a>
@@ -20,55 +20,31 @@
         <li><a href="/pages/about">About</a></li>
         <li><a href="/projects">Projects</a></li>
       </ul>
+      
+      <ul class="nav navbar-right">
+        <li>
+          <% if current_user %>
+            Signed in as <strong><%= current_user.name %></strong>! <%= link_to "Sign out", signout_path, id: "sign_out" %>
+          <% else %>
+            <%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in" %>
+          <% end %>
+        </li>
+      </ul>
     </div>
-    <div>
-      <% if current_user %>
-        Signed in as <strong><%= current_user.name %></strong>!
-        <%= link_to "Sign out", signout_path, id: "sign_out" %>
-      <% else %>
-        <%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in" %>
-      <% end %>
-    </div>
+
   </nav>
 
-<!-- Body -->
+<!-- BODY -->
   <body>
     <div>
-      <% if current_user %>
-        Signed in as <strong><%= current_user.name %></strong>!
-        <%= link_to "Sign out", signout_path, id: "sign_out" %>
-      <% else %>
-        <%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in" %>
-      <% end %>
-          <%= yield %>
+      <%= yield %>
     </div>
-
   </body>
   
-<!-- Footer -->
+<!-- FOOTER -->
   <footer>
-    
     <div class="row-footer">
-        
-      <div class="col-md-4">
         <span class="copyright">Copyright &copy; TECHSTUDIO 2018</span>
-      </div>
-        
-      <div class="col-md-4">
-      </div>          
-        
-      <div class="col-md-4">
-        <div class="container-footer-right">
-          <ul class="list-inline quicklinks">
-            <li class="list-inline-item">
-              <a href="#">Privacy Policy</a>
-            </li>
-            <li class="list-inline-item">
-              <a href="#">Terms of Use</a>
-            </li>
-          </ul>
-        </div>
-      </div>
     </div>
   </footer>
 
