@@ -17,9 +17,9 @@ Rails.application.routes.draw do
   get 'tags/:tag', to: 'projects#index', as: :tag
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  get 'pages/home'
-  get 'pages/about'
-  root :to => redirect('pages/home')
+  get '/' => 'pages#home'
+  get '/about' => 'pages#about'
+  # root :to => redirect('pages/home')
   
   # authentication
   get 'auth/:provider/callback', to: 'sessions#create'
