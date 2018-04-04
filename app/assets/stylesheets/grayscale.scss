@@ -16,6 +16,8 @@ body {
   height: 100%;
   color: white;
   background-color: $dark;
+  a{ color: $emerald; }
+   a:hover{ color: white; }
 }
 
 html {
@@ -219,6 +221,7 @@ header.masthead {
 
 
 
+
 /* ---------- COLUMNS ---------- */
 h4.column-heading {
   font-family: 'Inconsolata';
@@ -398,10 +401,64 @@ div.well{
   background-image:url('http://placehold.it/200x30/000000/ffffff/&text=BRAND+LOGO');
 }
 
-
-
 /* ---------- PROJECT FORM ---------- */
 
+
+
+
+
+/* ---------- PROJECT SHOW DIV ---------- */
+div.well{
+  height: 250px;
+} 
+
+.Absolute-Center-Project {
+  margin: auto;
+  top: 0; left: 0; bottom: 0; right: 0;
+  a{ color: $emerald; }
+}
+
+
+
+.Absolute-Center-Project.is-Responsive {
+  border-radius: 5px;
+  background-color: $darkergray;
+  width: 80%; 
+  height: 80%;
+  min-width: 50em;
+  max-width: 50em;
+  padding: 2em;
+}
+
+
+/* ---------- PROJECT SHOW DIV ---------- */
+
+
+/* ---------- TABLE ATTRIBUTES ---------- */
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th {
+    border: 0.02em solid #000000;
+    background-color: #454545;
+    text-align: left;
+    padding: 0.5em;
+  }
+
+  td{
+    text-align: left;
+    padding: 2em;
+  }
+
+tr:nth-child(even) {
+    background-color: #454545;
+}
+
+/* ---------- TABLE ATTRIBUTES ---------- */
 
 
 
