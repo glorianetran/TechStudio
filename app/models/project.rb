@@ -1,6 +1,10 @@
 class Project < ApplicationRecord
     has_many :taggings
     has_many :tags, through: :taggings
+    has_many :projectusers
+    has_many :users, through: :projectusers
+    has_many :collaborators, -> {where(projectusers: {collaborator: true})}, :through => :projectusers, :class_name=> 'User', :source => :user
+    has_many :potentials, -> {where(projectusers: {collaborator: false})}, :through => :projectusers, :class_name=> 'User', :source => :user
     
     def self.tagged_with(name)
         Tag.find_by!(name: name).projects
@@ -19,4 +23,42 @@ class Project < ApplicationRecord
             Tag.where(name: n.strip).first_or_create!
         end
     end
+    
+    # creator methods
+    def add_creator=(user)
+        Projectuser.where(user_id: user).first_or_create!(:project_id => self.id, :user_id => user, :collaborator => true, :creator => true)
+    end
+    
+    def creator_list
+        User.select('name').where(id: Projectuser.select('user_id').where(project_id: self.id).where(creator: true))
+    end
+    
+    # collaborator methods
+    def collaborator_list
+        collaborators.map(&:name).join(', ')
+    end
+    
+    def add_collaborator=(user)
+        Projectuser.where(user_id: user).first_or_create!(:project_id => self.id, :user_id => user, :collaborator => true, :creator => false)
+    end
+    
+    
+    # potential methods
+    def add_potential=(user)
+        Projectuser.where(user_id: user).first_or_create!(:project_id => self.id, :user_id => user, :collaborator => false, :creator => false)
+    end
+    
+    def potential_list
+       potentials.map(&:name).join(', ') 
+    end
+    
+    def approve(user)
+        Projectuser.where(user_id: user).update(collaborator: true)
+    end
+    
+    def reject(user_id)
+        Projectuser.destroy(user_id);
+    end
+    
+    
 end

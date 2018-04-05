@@ -10,14 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180327024508) do
+ActiveRecord::Schema.define(version: 20180405011807) do
 
   create_table "projects", force: :cascade do |t|
     t.string "title"
-    t.string "creator"
+    t.string "summary"
     t.text "description"
+    t.string "project_type"
+    t.string "skills_desired"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "projectusers", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "project_id"
+    t.boolean "creator"
+    t.boolean "collaborator"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_projectusers_on_project_id"
+    t.index ["user_id"], name: "index_projectusers_on_user_id"
   end
 
   create_table "taggings", force: :cascade do |t|
