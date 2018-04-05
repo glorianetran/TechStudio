@@ -30,7 +30,7 @@ class Project < ApplicationRecord
     end
     
     def creator_list
-        User.select('name').where(id: Projectuser.select('user_id').where(project_id: self.id).where(creator: true))
+       User.find_by(id: Projectuser.select('user_id').where(project_id: self.id).where(creator: true)).name;
     end
     
     # collaborator methods

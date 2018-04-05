@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-tech_studio = Project.create!(:title => 'Tech Studio', :summary => 'Platform for collaboration on interdisciplinary tech projects.',:description => 'This is the description', :project_type => 'Hobby', :skills_desired => 'ruby');
+tech_studio = Project.create!(:title => 'Tech Studio', :summary => 'Platform for collaboration on interdisciplinary tech projects.',:description => 'This is the description', :project_type => 'Hobby', :skills_desired => 'ruby')
 arduino = Project.create!(:title => 'Arduino Knitwear Project', :summary => 'Suzie McStrugglebus', :description => 'This is arduino', :project_type => 'Hobby', :skills_desired => 'C++')
 music = Project.create!(:title => 'Computer Music Band', :summary => "Let's make nerdy computer music together!", :project_type => "Hobby")
 
