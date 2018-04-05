@@ -14,6 +14,10 @@
             <h2 class="section-heading text-uppercase">All Projects</h2>
           </div>
         </div>
+            <div class="Absolute-Center-Project is-Responsive">
+             <div style="float:left; color:gray;"> Click a tag to filter projects</div>
+             <div style="float:right; font-weight: bold;"><%= link_to "Create New Project", new_project_path %></div>
+             <br>
                 <center>
         <div id="tag_cloud">
           <% tag_cloud Project.tag_counts, %w[s m l] do |tag, css_class| %>
@@ -21,9 +25,11 @@
           <% end %>
         </div>
         </center>
+        </div>
       </div>
       </header>
-      
+      <br>
+    <div class="Absolute-Center-Project is-Responsive">  
 <center>
   <table id="projects">
   <thead>
@@ -49,6 +55,6 @@
     <% end %>
   </tbody>
 </table>
-<p><%= link_to "Create Project", new_project_path %></p>
+</div>
 </center>
 </html>

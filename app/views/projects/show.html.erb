@@ -1,13 +1,22 @@
 <div style="height:10em;" class="span12">
 </div>
 <div class="container">
-<h1><%= @project.title %></h1>
+  <div class="Absolute-Center-Project is-Responsive">
+<center><h1><%= @project.title %></h1></center>
+<div align="right" style="color:gray">Created <%= @project.created_at.strftime("%m-%d-%Y") %></div>
 
-<%= simple_format @project.creator %>
-<p>
-  Tags: <%= raw @project.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %>
-</p>
+<div align="left">Creator: <%= @project.creator %></div>
+
+<div align="left">Tags: <%= raw @project.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %></div>
+
+<hr/>
 <%= simple_format @project.description %>
+<hr/>
+</div>
+
+<br>
+
+<div class="Absolute-Center-Project is-Responsive">
 <div id="disqus_thread"></div>
 <script>
 
@@ -32,4 +41,5 @@ s.setAttribute('data-timestamp', +new Date());
 <p>
   <%= link_to "Back to projects", projects_path %>
 </p>
+</div>
 </div>
