@@ -36,5 +36,3 @@ music.add_collaborator=user1.id
 painting.add_collaborator = user2.id
 painting.add_collaborator = user3.id
 painting.add_collaborator = user4.id
-
-# add a creator
