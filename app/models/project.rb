@@ -19,14 +19,14 @@ class Project < ApplicationRecord
     end
     
     def tag_list=(names)
-        self.tags = names.split(',').map do |n|
+        self.tags = names.downcase.split(',').map do |n|
             Tag.where(name: n.strip).first_or_create!
         end
     end
     
     # creator methods
     def add_creator=(user)
-        Projectuser.where(user_id: user).first_or_create!(:project_id => self.id, :user_id => user, :collaborator => true, :creator => true)
+        Projectuser.where(user_id: user).where(project_id: self.id).first_or_create!(:project_id => self.id, :user_id => user, :collaborator => true, :creator => true)
     end
     
     def creator_list
@@ -39,13 +39,13 @@ class Project < ApplicationRecord
     end
     
     def add_collaborator=(user)
-        Projectuser.where(user_id: user).first_or_create!(:project_id => self.id, :user_id => user, :collaborator => true, :creator => false)
+        Projectuser.where(user_id: user).where(project_id: self.id).first_or_create!(:project_id => self.id, :user_id => user, :collaborator => true, :creator => false)
     end
     
     
     # potential methods
     def add_potential=(user)
-        Projectuser.where(user_id: user).first_or_create!(:project_id => self.id, :user_id => user, :collaborator => false, :creator => false)
+        Projectuser.where(user_id: user).create!(:project_id => self.id, :user_id => user, :collaborator => false, :creator => false)
     end
     
     def potential_list

@@ -1,7 +1,8 @@
 class ProjectsController < ApplicationController
+  skip_before_action :verify_authenticity_token
 
   def index
-    @projects = if params[:tag]
+     @projects = if params[:tag]
       Project.tagged_with(params[:tag])
     else
       Project.all
@@ -9,7 +10,7 @@ class ProjectsController < ApplicationController
   end
 
   def new
-    @project = Project.new
+     @project = Project.new
   end
 
   def show
@@ -20,7 +21,9 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
     if @project.save
-      flash[:notice] = "#{@movie.title} was successfully created."
+      @project.add_creator=(current_user.id)
+      @project.tag_list=(project_params[:skills_desired])
+      flash[:notice] = "#{@project.title} was successfully created."
       redirect_to projects_path
     else
       render :new
@@ -50,6 +53,6 @@ class ProjectsController < ApplicationController
   
   private
   def project_params
-    params.require(:project).permit(:title, :creator, :description, :tag_list)
+    params.require(:project).permit(:title, :summary, :description, :project_type, :skills_desired)
   end
 end
