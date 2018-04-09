@@ -20,6 +20,7 @@ user1 = User.create!(:name => 'Regina')
 user2 = User.create!(:name => 'Glo')
 user3 = User.create!(:name => 'Deana')
 user4 = User.create!(:name => 'Natasha')
+user5 = User.create!(:name => 'Alfie')
 
 # creator 
 tech_studio.add_creator=user2.id
@@ -27,7 +28,6 @@ painting.add_creator=user1.id
 music.add_creator = user4.id
 
 # collaborator
-
 tech_studio.add_collaborator=user1.id
 
 music.add_collaborator=user3.id
