@@ -45,6 +45,13 @@ class ProjectsController < ApplicationController
   end
   
   def destroy
+    # @projectusers = Projectuser.find(params[:id])
+    Projectuser.where(project_id: params[:id]).each do |p|
+      p.destroy
+    end
+    Tagging.where(project_id: params[:id]).each do |t|
+      t.destroy
+    end
     @project = Project.find(params[:id])
     @project.destroy
     flash[:notice] = "#{@project.title} was deleted."
