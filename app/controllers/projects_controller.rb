@@ -22,7 +22,7 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
     if @project.save
       @project.add_creator=(current_user.id)
-      @project.tag_list=(project_params[:skills_desired])
+      @project.tag_list=(project_params[:tag_list])
       flash[:notice] = "#{@project.title} was successfully created."
       redirect_to projects_path
     else
