@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  before_action :store_return_to
   skip_before_action :verify_authenticity_token
 
   def index

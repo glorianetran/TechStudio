@@ -6,6 +6,10 @@ class ApplicationController < ActionController::Base
   	@current_user ||= User.find(session[:user_id]) if session[:user_id]
   	rescue ActiveRecord::RecordNotFound
   end
+  
+  def store_return_to
+    session[:return_to] = request.url
+  end
 
   def user_signed_in?
   	# converts current_user to a boolean by negating the negation
