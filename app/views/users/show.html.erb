@@ -1,0 +1,36 @@
+<div style="height:10em;" class="span12">
+</div>
+<div class="container">
+  <div class="Absolute-Center-Project is-Responsive">
+      
+<h1><%= @user.name %></h1>
+<h4>Projects</h4>
+<center>
+  <table id="projects">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Creator</th>
+      <th>Summary</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @user.collab_projects.each do |p| %>
+      <tr>
+        <td>
+          <%= link_to p.title, project_path(p)  %>
+        </td>
+        <td>
+          <%= link_to p.creator.name, user_path(p.creator) %>
+        </td>
+        <td>
+          <%= p.summary %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+</center>
+
+</div>
