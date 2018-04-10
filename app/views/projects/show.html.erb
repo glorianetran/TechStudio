@@ -5,8 +5,8 @@
 <center><h1><%= @project.title %></h1></center>
 <div align="right" style="color:gray">Created <%= @project.created_at.strftime("%m-%d-%Y") %></div>
 
-<div align="left">Creator: <%= @project.creator_list %></div>
-<div align="left">Collaborators: <%= @project.collaborator_list %></div>
+<div align="left">Creator: <%= link_to @project.creator.name, user_path(@project.creator) %></div>
+<div align="left">Collaborators: <%= raw @project.collaborators.map { |c| link_to c.name, user_path(c) }.join(', ') %></div>
 <div align="left">Project Type: <%= @project.project_type %></div>
 <div align="left">Tags: <%= raw @project.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %></div>
 

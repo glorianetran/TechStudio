@@ -2,16 +2,12 @@ Rails.application.routes.draw do
   get 'sessions/create'
 
   get 'sessions/destroy'
+  
+  resources :users
 
   resources :projects
   
   get 'projects/' => redirect('projects/index')
-  
-  # get 'projects/index'
-
-  # get 'projects/new'
-
-  # get 'projects/show'
   
   # tags
   get 'tags/:tag', to: 'projects#index', as: :tag

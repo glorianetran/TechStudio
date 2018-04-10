@@ -29,8 +29,8 @@ class Project < ApplicationRecord
         Projectuser.where(user_id: user).where(project_id: self.id).first_or_create!(:project_id => self.id, :user_id => user, :collaborator => true, :creator => true)
     end
     
-    def creator_list
-       User.find_by(id: Projectuser.select('user_id').where(project_id: self.id).where(creator: true)).name;
+    def creator
+       User.find_by(id: Projectuser.select('user_id').where(project_id: self.id).where(creator: true));
     end
     
     # collaborator methods
