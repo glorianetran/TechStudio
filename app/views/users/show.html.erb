@@ -1,9 +1,42 @@
 <div style="height:10em;" class="span12">
 </div>
 <div class="container">
-  <div class="Absolute-Center-Project is-Responsive">
-      
-<h1><%= @user.name %></h1>
+  
+
+
+
+            <div class="Absolute-Center-Project is-Responsive">
+             <center>
+               <img src="/images/alfie_logo1.png" class="user-imag" style="width:15%; align:center; border-radius: 50%;">
+               <h1><%= @user.name %>
+               </h1>
+               <div align="center" style="color:gray">Joined <%= @user.created_at.strftime("%m-%d-%Y") %></div>
+               </center>
+<br>
+
+<div align="left">Projects created:</div>
+<div align="left">Projects collaborated: </div>
+<div align="left">Interests: </div>
+<div align="left">Email/Social Media: </div>
+
+<hr/>
+@user.description: Hey guys, I love doing front end, omg I can spend HOURS doing it, it's so great. <3 <3 <3 <3 Design is important okay
+SOOOOOOO important, like extremely so. Where would we be without good design? NO WHERE! This would look like the Wild Wild West website, which
+IS FROM THE 90S and is still online.
+<hr/>
+<p>
+  <% if @user == current_user %>
+                  <%= link_to "Edit profile",  edit_user_path %> | 
+  <% end %> 
+  <%= link_to "Back to projects", projects_path %></p>
+
+        </div>
+
+
+
+
+<br>
+<div class="Absolute-Center-Project is-Responsive project-list-info">
 <h4>Projects</h4>
 <center>
   <table id="projects">
@@ -12,6 +45,10 @@
       <th>Title</th>
       <th>Creator</th>
       <th>Summary</th>
+      <th>Collaborators</th>
+      <% if @user == current_user %>
+      <th>Potentials</th>
+      <% end %>
     </tr>
   </thead>
   <tbody>
@@ -26,11 +63,44 @@
         <td>
           <%= p.summary %>
         </td>
-      </tr>
+    
+          <td>
+                <table id="collaborators">  
+               <% p.collaborators.each do |collab| %>
+                <tr>
+                  <td>Name <% link_to collab.name, user_path(collab) %></td>
+                  <% if current_user %>
+                  <td>(DELETE)</td>
+                  <% end %>
+                </tr>
+                
+                <% end %>
+                
+              </table>
+                          
+              </td>
+
+          <% if @user == current_user %>
+            <td>         
+            <table id="potentials">
+                <tr>
+                  <td>NAME</td>
+                  <% if current_user %>
+                  <td>(ACCEPT)</td>
+                  <td>(DECLINE)</td>
+                  <% end %>
+                </tr>
+            </table>
+          </td>
+        <% end %>
+          </tr>
+          
+      
     <% end %>
   </tbody>
 </table>
 </div>
+
 </center>
 
 </div>

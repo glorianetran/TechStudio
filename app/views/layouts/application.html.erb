@@ -15,21 +15,30 @@
         <a class="navbar-brand" href="/">TechStudio</a>
       </div>
       
-      <ul class="nav navbar-nav">
+      <ul class="nav navbar-nav navbar-test">
         <li><a href="/">Home</a></li>
         <li><a href="/about">About</a></li>
         <li><a href="/projects">Projects</a></li>
       </ul>
       
-      <ul class="nav navbar-right">
-        <li>
           <% if current_user %>
-            Signed in as <strong><%= current_user.name %></strong>! <%= link_to "Sign out", signout_path, id: "sign_out" %>
+          <ul class="nav navbar-right">
+           <li><%= link_to "Sign out", signout_path, id: "sign_out" %></li>
+           </ul>
+          <ul class="nav navbar-right">
+           <li><%= link_to current_user.name, user_path(current_user) %></li>
+          </ul>
+
           <% else %>
-            <%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in" %>
+          <ul class="nav navbar-right">
+            <li><%= link_to"Sign in with Google", "/auth/google_oauth2", id: "sign_in" %></li>
+            </ul>
           <% end %>
-        </li>
-      </ul>
+        
+
+
+
+
     </div>
 
   </nav>
