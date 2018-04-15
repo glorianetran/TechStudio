@@ -1,65 +1,59 @@
 <!DOCTYPE html>
 <html>
-<% #  This file is app/views/movies/index.html.haml %>
-    <!-- Header -->
-<div style="height:10em;" class="span12">
-</div>
+  
+  <div class="project-header">
+    <h2 class="project-heading text-uppercase">Projects</h2>
+    <h3 class="project-text">
+      This is a list of projects users have created.<br/>
+      Click on a user to see other projects they have created.<br/>
+      Click on a project to see more information.<br/>
+      Click on the 'New Project' to create your own.<br/>
+  </div>
+  
+  <div class="project-table-filter">
+    <div style="color: white; width:100%; font-size: 1.1em">Click a tag to filter projects</div>
+    
+    <div id="tag_cloud">
+      <% tag_cloud Project.tag_counts, %w[s m l] do |tag, css_class| %>
+        <%= link_to tag.name, tag_path(tag.name), class: css_class %>        
+      <% end %>
+    </div>
+    
+    <td>
+      <% if current_user %>
+      <a class="btn btn-primary js-scroll-trigger" href="/projects/new">New Project</a>
+      <% else %>
+        <div style="float:center; font-weight: bold; text-decoration: underline;"> <%= link_to "Login to create new project", '/auth/google_oauth2' %> </div>
+      <% end %>
+    </td>
+      
+  </div>
+  
+  <div class="project-table-list">
+      <table id="projects">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Creator</th>
+            <th>Summary</th>
+          </tr>
+          </thead>
+          <tbody>
+            <% @projects.each do |p| %>
+              <tr>
+                <td>
+                  <%= link_to p.title, project_path(p)  %>
+                </td>
+                <td>
+                  <%= link_to p.creator.name, user_path(p.creator) %>
+                </td>
+                <td>
+                  <%= p.summary %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+      </table>
+  </div>
 
-    <!-- Header -->
-    <header>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12 text-center">
-            <h2 class="section-heading text-uppercase">All Projects</h2>
-          </div>
-        </div>
-            <div class="Absolute-Center-Project is-Responsive">
-             <div style="float:left; color:gray;"> Click a tag to filter projects</div>
-             <td>
-              <% if current_user %>
-                <div style="float:right; font-weight: bold;"><%= link_to "Create New Project", new_project_path %></div>
-              <% else %>
-                <div style="float:right; font-weight: bold;"> <%= link_to "Login to create new project", '/auth/google_oauth2' %> </div>
-              <% end %>
-              </td>
-             <br>
-                <center>
-        <div id="tag_cloud">
-          <% tag_cloud Project.tag_counts, %w[s m l] do |tag, css_class| %>
-            <%= link_to tag.name, tag_path(tag.name), class: css_class %>
-          <% end %>
-        </div>
-        </center>
-        </div>
-      </div>
-      </header>
-      <br>
-    <div class="Absolute-Center-Project is-Responsive">  
-<center>
-  <table id="projects">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Creator</th>
-      <th>Summary</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @projects.each do |p| %>
-      <tr>
-        <td>
-          <%= link_to p.title, project_path(p)  %>
-        </td>
-        <td>
-          <%= link_to p.creator.name, user_path(p.creator) %>
-        </td>
-        <td>
-          <%= p.summary %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-</div>
-</center>
 </html>
