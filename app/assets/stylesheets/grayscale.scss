@@ -8,14 +8,14 @@ $emerald: #009874;
 $dark: #0c0c0c ;
 $darkgray: #848484;
 $darkergray: #2b2b2b;
-$graytext: #4f4f4f;
+$graytext: #424242;
 
 body {
-  font-family: 'Source Sans Pro';
+  font-family: 'Inconsolata';
   position: relative;
   width: 100%;
   height: 100%;
-  color: white;
+  color: $graytext;
   background-color: #f2f2f2;
   a{ color: white; }
    a:hover{ color: $emerald; }
@@ -173,7 +173,6 @@ header.masthead {
     padding-bottom: 10%;
   }
   header.masthead .intro-text .intro-heading {
-    font-family: 'Inconsolata';
     font-size: 6.5em;
     font-weight: bold;
     letter-spacing: 0.5em;
@@ -183,14 +182,12 @@ header.masthead {
     text-shadow: black -0.2em 0.1em 0.2em;
   }
   header.masthead .intro-text .intro-lead-in {
-    font-family: 'Inconsolata';
     font-size: 1.1em;
     font-weight: bold;
     letter-spacing: 0.2em;
     line-height: 40px;
-    margin-bottom: 25px;
+    margin-bottom: 7em;
     color: $graytext;
-    //text-shadow: black -0.2em 0.1em 0.2em;
   }
 }
 /* ---------- HOMESPREAD ---------- */
@@ -201,11 +198,10 @@ header.masthead {
 
 /* ---------- BUTTON ---------- */
 .btn {
-  font-family: 'Inconsolata';
   font-weight: bold;
   font-size: 1.1em;
   padding: 1em 3em;
-  margin-top: 7em;
+  margin: auto;
 }
 .btn-primary {
   background-color: rgba(0, 0, 0, 0.7);
@@ -227,34 +223,32 @@ header.masthead {
 
 
 /* ---------- COLUMNS ---------- */
-h4.column-heading {
-  font-family: 'Inconsolata';
+h4.column-heading, h2.column-title {
   font-weight: bold;
-  font-size: 1.3em;
-  color: $graytext;
-  margin-bottom: 2em;
-}
-h2.column-title {
-  font-family: 'Inconsolata';
-  font-weight: bold;
-  font-size: 2em;
-  letter-spacing: 0.2em;
   color: $graytext;
   margin-bottom: 2em;
 }
 
+h4.column-heading {
+  font-size: 1.3em;
+}
+h2.column-title {
+  font-size: 2em;
+  letter-spacing: 0.2em;
+}
+
 @media (min-width: 1200px){
-.container-columns {
+  .container-columns {
     width: 65%;
     margin: auto;
     margin-bottom: 12em;
-}
+  }
 }
 @media (min-width: 1200px){
-.row {
+  .row {
     margin-right: -1em;
     margin-left: -1em;
-}
+  }
 }
 /* ---------- COLUMNS ---------- */
 
@@ -295,7 +289,6 @@ footer {
   margin-top: 10em;
   text-align: center;
   margin-bottom: 9em;
-  font-family: 'Inconsolata';
 }
 .about-heading {
   font-size: 3em;
@@ -306,7 +299,6 @@ footer {
   font-size: 1em;
   letter-spacing: 0.2em;
   line-height: 2.5em;
-  color: white;
 }
 
 
@@ -340,9 +332,6 @@ footer {
   float: right;
 }
 
-.about-team, .about-name, .about-job, .about-body {
-  font-family: 'Inconsolata';
-}
 .about-name{
   font-size: 2em;
   padding-bottom: 0.25em;
@@ -361,116 +350,140 @@ footer {
 
 
 
-/* ---------- PROJECT FORM ---------- */
-div.well{
-  height: 250px;
-} 
 
-.Absolute-Center {
+/* ---------- PROJECTS FILTER ---------- */
+.project-header {
+  margin-top: 10em;
+  text-align: center;
+  margin-bottom: 7em;
+}
+.project-heading {
+  font-size: 3em;
+  letter-spacing: 0.5em;
+  margin-bottom: 1em;
+}
+.project-text{
+  font-size: 1em;
+  letter-spacing: 0.2em;
+  line-height: 2em;
+}
+
+.project-table-filter {
   margin: auto;
-  top: 0; left: 0; bottom: 0; right: 0;
-}
-
-.Absolute-Center.is-Responsive {
-  border-radius: 25px;
-  background-color: $darkergray;
-  width: 50%; 
-  height: 50%;
-  min-width: 200px;
-  max-width: 400px;
-  padding: 40px;
-}
-
-.formFields{ 
-    background-color:$darkgray !important;
-    border-color: $dark;
-    color: black;
-    
-}
-/*Changes the color of the placeholder text for each browser type*/
-.form-control::-webkit-input-placeholder { color: $darkergray; }  /* WebKit, Blink, Edge */
-.form-control:-moz-placeholder { color: $darkergray; }  /* Mozilla Firefox 4 to 18 */
-.form-control::-moz-placeholder { color: $darkergray; }  /* Mozilla Firefox 19+ */
-.form-control:-ms-input-placeholder { color: $darkergray; }  /* Internet Explorer 10-11 */
-.form-control::-ms-input-placeholder { color: $darkergray; }  /* Microsoft Edge */
-
-
-
-
-#logo-container{
-  margin: auto;
-  margin-bottom: 10px;
-  width:200px;
-  height:30px;
-  background-image:url('http://placehold.it/200x30/000000/ffffff/&text=BRAND+LOGO');
-}
-
-/* ---------- PROJECT FORM ---------- */
-
-
-
-
-
-/* ---------- PROJECT SHOW DIV ---------- */
-div.well{
-  height: 250px;
-} 
-
-.Absolute-Center-Project {
-  margin: auto;
-  top: 0; left: 0; bottom: 0; right: 0;
-  a{ color: $emerald; }
-}
-
-
-
-.Absolute-Center-Project.is-Responsive {
+  margin-bottom: 2em;
+  width: 60%;
   border-radius: 5px;
-  background-color: $darkergray;
-  width: 80%; 
-  height: 80%;
+  background-color: #484B51;
   min-width: 50em;
-  max-width: 50em;
   padding: 2em;
+  text-align: center;
 }
 
+#tag_cloud {
+  line-height: 1.6em;
+  text-align: center;
+  font-family: 'Source Sans Pro';
+  word-spacing: 1.3em;
+  margin: 2em;
+  padding: 1em 0em;
+}
+#tag_cloud .s {
+  font-size: 0.8em;
+}
+#tag_cloud .m {
+  font-size: 1.2em;
+}
+#tag_cloud .l {
+  font-size: 1.8em;
+}
+/* ---------- PROJECTS FILTER ---------- */
 
-/* ---------- PROJECT SHOW DIV ---------- */
 
 
-/* ---------- TABLE ATTRIBUTES ---------- */
+
+
+/* ---------- PROJECTS TABLE ---------- */
+.project-table-list{
+  margin: auto;
+  border-radius: 5px;
+  background-color: #484B51;
+  width: 80%;
+  min-width: 50em;
+  padding: 2em;
+  color: white;
+  a { 
+    text-decoration: underline;
+  }
+}
 
 table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
+  font-family: 'Source Sans Pro';
+  font-size: 1.2em;
+  letter-spacing: 0.01em;
+  border-collapse: collapse;
+  width: 100%;
 }
 
 th {
-    border: 0.02em solid #000000;
-    background-color: #454545;
-    text-align: left;
-    padding: 0.5em;
-  }
-
-  td{
-    text-align: left;
-    padding: 2em;
-  }
-
-tr:nth-child(even) {
-    background-color: #454545;
+  border: 0.02em solid #484B51;
+  background-color: #5a5d62;
+  text-align: center;
+  padding: 0.5em;
 }
 
-/* ---------- TABLE ATTRIBUTES ---------- */
+td{
+  text-align: left;
+  padding: 1.5em;
+}
+
+tr:nth-child(even) {
+    background-color:  #5a5d62;
+}
+/* ---------- PROJECTS TABLE ---------- */
+
+
+
+
+/* ---------- PROJECT FORM ---------- */
+
+.new-project {
+  margin: auto;
+  margin-top: 10em;
+  border-radius: 0.8em;
+  background-color: #484B51;
+  width: 50%;
+  min-width: 200px;
+  max-width: 400px;
+  padding: 1em;
+  text-align: center;
+  font-size: 1.2em;
+  text-transform: uppercase;
+  color: white;
+}
+
+.formFields { 
+  background-color: #e0e0e0 !important;
+}
+
+.form-group {
+  margin: 2em 1em;
+}
+
+/*Changes the color of the placeholder text for each browser type*/
+.form-control::-webkit-input-placeholder { color: $graytext; }  /* WebKit, Blink, Edge */
+.form-control:-moz-placeholder { color: $graytext; }  /* Mozilla Firefox 4 to 18 */
+.form-control::-moz-placeholder { color: $graytext; }  /* Mozilla Firefox 19+ */
+.form-control:-ms-input-placeholder { color: $graytext; }  /* Internet Explorer 10-11 */
+.form-control::-ms-input-placeholder { color: $graytext; }  /* Microsoft Edge */
+/* ---------- PROJECT FORM ---------- */
 
 
 
 hr {
-    display: block;
-    height: 1px;
-    border-top: 1px solid $emerald;
-    padding: 0;
+  display: block;
+  height: 1px;
+  border-top: 1px solid $emerald;
+  padding: 0;
 }
 
 ::-moz-selection {
