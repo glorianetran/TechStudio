@@ -1,4 +1,3 @@
-<div style="height:10em;" class="span12"></div>
 <!-- Header -->
 <header>
   <div class="container">
@@ -10,6 +9,92 @@
   </div>
 </header>
 
+<div id="accordion">
+  <div class="card">
+    <div class="card-header" id="potentials">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Manage Potentials
+          
+        </button>
+      </h5>
+    </div>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+      <div class="card-body">
+         <div class="project-table-list">
+          <table id="projects">
+          <!--<thead>-->
+          <!--  <tr>-->
+          <!--    <th>User</th>-->
+          <!--    <th>Manage</th>-->
+          <!--  </tr>-->
+          <!--  </thead>-->
+            <tbody>
+              <% if @project.potentials.length == 0 %>
+                No potential users.
+              <% end %>
+              <% @project.potentials.each do |p| %>
+                <tr>
+                  <td>
+                    <%= link_to p.name, user_path(p)  %>
+                  </td>
+                  <td>
+                    <%= button_to "Approve", approve_path(@project, :user => p), :method => :post, class: "btn-primary" %>
+                  </td>
+                  <td>
+                    <%= button_to "Reject", reject_path(@project, :user => p), :method => :post, class: "btn-primary" %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingThree">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Manage Collaborators
+        </button>
+      </h5>
+    </div>
+    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+      <div class="card-body">
+         <div class="project-table-list">
+          <table id="projects">
+          <!--<thead>-->
+          <!--  <tr>-->
+          <!--    <th>User</th>-->
+          <!--    <th>Manage</th>-->
+          <!--  </tr>-->
+          <!--  </thead>-->
+            <tbody>
+              <% if @project.collaborators.length <= 1 %>
+                You are the only collaborator. Find some friends!
+              <% end %>
+              <% @project.collaborators.each do |c| %>
+                <tr>
+                  <td>
+                    <%= link_to c.name, user_path(c)  %>
+                  </td>
+                  <td>
+                    <% if c == @project.creator %>
+                      Project creator
+                    <% else %>
+                      <%= button_to "Delete", delete_collaborator_path(@project, :user => c), :method => :post, class: "btn-primary" %>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <%= form_for @project do |f| %>
   <% if @project.errors.any? %>
     <div id="error_explanation">
@@ -45,6 +130,5 @@
     </div>
     <center><%= f.submit "Update project", class: "btn-primary"%>
   <% end %>
-  </br></br>
-  <%= button_to "Delete project", project_path(@project), :method => :delete, data: {confirm: "Are you sure you want to delete this project?"}, class: "btn-primary" %>
 </div>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

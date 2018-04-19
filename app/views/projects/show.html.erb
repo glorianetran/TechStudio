@@ -1,5 +1,3 @@
-<div style="height:10em;" class="span12">
-</div>
 <div class="container">
   <div class="Absolute-Center-Project is-Responsive">
 <center><h1><%= @project.title %></h1></center>
@@ -13,7 +11,13 @@
 <hr/>
 <%= simple_format @project.description %>
 </br>
-<%= button_to "Request to collaborate", request_collab_path(@project), :method => :post, class: "btn-primary" %>
+<% if @project.potentials.find_by(@current_user)  %>
+  <%= button_to "Collab request pending.", request_collab_path(@project), :method => :post, class: "btn-default", :disabled => "disabled" %>
+<% elsif @project.collaborators.find_by(@current_user).blank? %>
+  <!--do nothing-->
+<% else %>
+  <%= button_to "Request to collaborate", request_collab_path(@project), :method => :post, class: "btn-primary" %>
+<% end %>
 <hr/>
 <p>
   <%= link_to "Edit project", edit_project_path(@project) %> |

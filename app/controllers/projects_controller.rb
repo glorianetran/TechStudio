@@ -19,6 +19,30 @@ class ProjectsController < ApplicationController
     @project.add_potential=(current_user.id)
     redirect_to project_path(@project)
   end
+  
+  def approve
+    @project = Project.find(params[:id])
+    user = User.find(params[:user]).name
+    @project.approve(params[:user])
+    flash[:notice] = "#{user} is now a collaborator."
+    redirect_to edit_project_path(@project)
+  end
+  
+  def reject
+    @project = Project.find(params[:id])
+    user = User.find(params[:user]).name
+    Projectuser.where(project_id: params[:id]).find_by(user_id: params[:user]).destroy
+    flash[:notice] = "#{user} has been rejected."
+    redirect_to edit_project_path(@project)
+  end
+  
+  def delete_collaborator
+    @project = Project.find(params[:id])
+    user = User.find(params[:user]).name
+    Projectuser.where(project_id: params[:id]).find_by(user_id: params[:user]).destroy
+    flash[:notice] = "Collaborator #{user} deleted."
+    redirect_to edit_project_path(@project)
+  end
 
   def show
     id = params[:id]
