@@ -1,4 +1,3 @@
-<div style="height:10em;" class="span12"></div>
 <!-- Header -->
 <header>
   <div class="container">
@@ -35,9 +34,8 @@
       <%= f.label :bio, "Description" %><br />
       <%= f.text_area :bio, class: 'form-control formFields', rows: 5, maxlength: 500 %>
     </div>
-
-    <center> <%= button_to "Update Profile", user_path(@user), :method => :get, class: "btn-primary" %>
+    <center><%= f.submit "Update Profile", class: "btn-primary"%></center>
   <% end %>
-  </br></br>
-   <%= button_to "Delete Profile", user_path(@user), :method => :delete, data: {confirm: "Are you sure you want to delete this project?"}, class: "btn-primary" %>
+  </br>
+   <center><%= button_to "Delete Profile", user_path(@user), :method => :delete, data: {confirm: "Are you sure you want to delete this project?"}, class: "btn-primary" %></center>
   </div>
