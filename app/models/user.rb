@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
 	end
 	
 	def created_projects
-	    Project.find_by(id: Projectuser.select('project_id').where(user_id: self.id).where(creator:true))
+	    Project.where(id: Projectuser.select('project_id').where(user_id: self.id).where(creator:true))
 	end
 	
 end
