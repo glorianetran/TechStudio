@@ -14,17 +14,15 @@
    </center>
 <br>
 
+<div align="left"><h4>Interests: <%= @user.interests %></h4></div>
+<div align="left"><h4>Skills: <%= @user.skills %></h4> </div>
 
-<div align="left">Projects collaborated: </div>
-<div align="left">Interests: <%= @user.interests %></div>
-<div align="left">Skills: <%= @user.skills %> </div>
-
-<hr/>
-Bio: <%= @user.bio %> </div>
+<hr/> 
+<h4>Bio: <%= @user.bio %> </h4></div>
 <hr/>
 <p>
   <% if @user == current_user %>
-      <%= link_to "Edit profile",  edit_user_path %> | 
+       <%= button_to "Edit Profile", edit_user_path(@user), :method => :get, class: "btn-primary" %>
   <% end %> 
   <%= link_to "Back to projects", projects_path %></p>
 
@@ -46,7 +44,9 @@ Bio: <%= @user.bio %> </div>
       <th>Title</th>
       <th>Creator</th>
       <th>Summary</th>
+      <% if @user == current_user %>
       <th>Manage Project</th>
+      <% end %>
     </tr>
   </thead>
 
@@ -69,7 +69,7 @@ Bio: <%= @user.bio %> </div>
 
           <% if @user == current_user %>
             <td>         
-            <table id="potentials">
+            <table>
                 <tr>
                   <td><%= button_to "EDIT", edit_project_path(p), :method => :get, class: "btn-primary" %></td>
                   <td><%= button_to "DELETE", edit_project_path(p), :method => :delete, data: {confirm: "Are you sure you want to delete this project?"}, class: "btn-primary" %></td>
@@ -80,7 +80,43 @@ Bio: <%= @user.bio %> </div>
           </tr>
   <% end %>
     
+    
+  </tbody>
+</table>
+</div>
 
+  <h4>Project Collaborations: </h4>
+  
+   <div class="project-table-list">  
+
+<center>
+  <table id="projects">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Creator</th>
+      <th>Summary</th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+  
+    <% @user.collab_projects.each do |p| %>
+      <tr>
+        <td>
+          <%= link_to p.title, project_path(p)  %>
+        </td>
+        <td>
+          <%= link_to p.creator.name, user_path(p.creator) %>
+        </td>
+        <td>
+          <%= p.summary %>
+        </td>
+    
+          </tr>
+  <% end %>
+    
     
   </tbody>
 </table>
