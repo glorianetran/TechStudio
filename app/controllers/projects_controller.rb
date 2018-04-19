@@ -13,6 +13,12 @@ class ProjectsController < ApplicationController
   def new
      @project = Project.new
   end
+  
+  def request_collab
+    @project = Project.find(params[:id])
+    @project.add_potential=(current_user.id)
+    redirect_to project_path(@project)
+  end
 
   def show
     id = params[:id]

@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   
   get 'projects/' => redirect('projects/index')
   
+  # collaborators
+  post 'projects/:id/collab', to: 'projects#request_collab', as: :request_collab
+  
   # tags
   get 'tags/:tag', to: 'projects#index', as: :tag
 

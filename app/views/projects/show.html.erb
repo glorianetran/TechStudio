@@ -12,6 +12,8 @@
 
 <hr/>
 <%= simple_format @project.description %>
+</br>
+<%= button_to "Request to collaborate", request_collab_path(@project), :method => :post, class: "btn-primary" %>
 <hr/>
 <p>
   <%= link_to "Edit project", edit_project_path(@project) %> |
