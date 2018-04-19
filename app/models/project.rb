@@ -45,7 +45,8 @@ class Project < ApplicationRecord
     
     # potential methods
     def add_potential=(user)
-        Projectuser.where(user_id: user).create!(:project_id => self.id, :user_id => user, :collaborator => false, :creator => false)
+        #Projectuser.where(user_id: user).create!(:project_id => self.id, :user_id => user, :collaborator => false, :creator => false)
+        Projectuser.where(user_id: user).where(project_id: self.id).first_or_create!(:project_id => self.id, :user_id => user, :collaborator => false, :creator => false)
     end
     
     def potential_list
@@ -56,9 +57,7 @@ class Project < ApplicationRecord
         Projectuser.where(user_id: user).update(collaborator: true)
     end
     
-    def reject(user_id)
-        Projectuser.destroy(user_id);
-    end
-    
-    
+    # def reject(user_id)
+    #     Projectuser.destroy(user_id);
+    # end
 end
