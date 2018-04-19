@@ -39,5 +39,5 @@
     <center> <%= button_to "Update Profile", user_path(@user), :method => :get, class: "btn-primary" %>
   <% end %>
   </br></br>
-   <%= button_to "Delete Profile", edit_user_path(@user), :method => :delete, data: {confirm: "Are you sure you want to delete this project?"}, class: "btn-primary" %>
+   <%= button_to "Delete Profile", user_path(@user), :method => :delete, data: {confirm: "Are you sure you want to delete this project?"}, class: "btn-primary" %>
   </div>

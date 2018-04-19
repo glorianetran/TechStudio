@@ -21,14 +21,15 @@ class UsersController < ApplicationController
   end
   
   def destroy
+    user = User.find(params[:id]).name
     Projectuser.where(user_id: params[:id]).each do |p|
       p.destroy
     end
     User.where(id: params[:id]).each do |t|
       t.destroy
     end
-    flash[:notice] = "#{@user.name} was deleted."
-    redirect_to user_path
+    flash[:notice] = "#{user} was deleted."
+    redirect_to '/'
   end 
   
   private
