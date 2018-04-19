@@ -5,39 +5,40 @@
 
 
 
-            <div class="Absolute-Center-Project is-Responsive">
-             <center>
-               <img src="/images/alfie_logo1.png" class="user-imag" style="width:15%; align:center; border-radius: 50%;">
-               <h1><%= @user.name %>
-               </h1>
-               <div align="center" style="color:gray">Joined <%= @user.created_at.strftime("%m-%d-%Y") %></div>
-               </center>
+<div class="Absolute-Center-Project is-Responsive">
+ <center>
+   <img src="/images/alfie_logo1.png" class="user-imag" style="width:15%; align:center; border-radius: 50%;">
+   <h1><%= @user.name %>
+   </h1>
+   <div align="center" style="color:gray">Joined <%= @user.created_at.strftime("%m-%d-%Y") %></div>
+   </center>
 <br>
 
-<div align="left">Projects created:</div>
+
 <div align="left">Projects collaborated: </div>
-<div align="left">Interests: </div>
-<div align="left">Email/Social Media: </div>
+<div align="left">Interests: <%= @user.interests %></div>
+<div align="left">Skills: <%= @user.skills %> </div>
 
 <hr/>
-@user.description: Hey guys, I love doing front end, omg I can spend HOURS doing it, it's so great. <3 <3 <3 <3 Design is important okay
-SOOOOOOO important, like extremely so. Where would we be without good design? NO WHERE! This would look like the Wild Wild West website, which
-IS FROM THE 90S and is still online.
+Bio: <%= @user.bio %> </div>
 <hr/>
 <p>
   <% if @user == current_user %>
-                  <%= link_to "Edit profile",  edit_user_path %> | 
+      <%= link_to "Edit profile",  edit_user_path %> | 
   <% end %> 
   <%= link_to "Back to projects", projects_path %></p>
 
-        </div>
+  </div>
 
 
 
 
 <br>
+   <h4>Projects created: </h4>
 <div class="Absolute-Center-Project is-Responsive project-list-info">
-<h4>Projects</h4>
+
+ <div class="project-table-list">  
+
 <center>
   <table id="projects">
   <thead>
@@ -51,8 +52,10 @@ IS FROM THE 90S and is still online.
       <% end %>
     </tr>
   </thead>
+
   <tbody>
-    <% @user.collab_projects.each do |p| %>
+    
+    <% Array(@user.created_projects).each do |p| %>
       <tr>
         <td>
           <%= link_to p.title, project_path(p)  %>
@@ -94,8 +97,6 @@ IS FROM THE 90S and is still online.
           </td>
         <% end %>
           </tr>
-          
-      
     <% end %>
   </tbody>
 </table>
@@ -104,3 +105,5 @@ IS FROM THE 90S and is still online.
 </center>
 
 </div>
+
+</div> <!-- table div -->

@@ -16,10 +16,10 @@ music.tag_list=("music, Ableton, web")
 painting.tag_list=('painting, lights, tech')
 
 # add collaborators
-user1 = User.create!(:name => 'Regina')
-user2 = User.create!(:name => 'Glo')
-user3 = User.create!(:name => 'Deana')
-user4 = User.create!(:name => 'Natasha')
+user1 = User.create!(:name => 'Regina', :interests => 'dogs', :skills => 'looking good', :bio => 'I like sending my friends dog pictures')
+user2 = User.create!(:name => 'Glo', :interests => 'dogs', :skills => 'being glo and sleeping', :bio => 'I want to marry my bed.')
+user3 = User.create!(:name => 'Deana', :interests => 'design', :skills => 'picking colors', :bio => 'I like food')
+user4 = User.create!(:name => 'Natasha', :interests => 'defcon', :skills => 'hacking', :bio => 'I have red hair')
 user5 = User.create!(:name => 'Alfie')
 
 # creator 
