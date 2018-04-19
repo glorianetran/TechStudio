@@ -28,14 +28,12 @@
   </div>
 
 
-
-
 <br>
    <h4>Projects created: </h4>
 <div class="Absolute-Center-Project is-Responsive project-list-info">
 
+<% if @user.created_projects.blank? == false %>
  <div class="project-table-list">  
-
 <center>
   <table id="projects">
   <thead>
@@ -50,8 +48,9 @@
   </thead>
 
   <tbody>
+    
 
-  
+
     <% @user.created_projects.each do |p| %>
       <tr>
         <td>
@@ -63,8 +62,6 @@
         <td>
           <%= p.summary %>
         </td>
-    
-         
 
           <% if @user == current_user %>
             <td>         
@@ -78,14 +75,18 @@
         <% end %>
           </tr>
   <% end %>
-    
-    
+  
+  <% else %>
+    <h3> No Created Projects. </h3>
+  <% end %>
   </tbody>
 </table>
+<br><br>
 </div>
 
   <h4>Project Collaborations: </h4>
   
+<% if @user.collab_projects.blank? == false %>
    <div class="project-table-list">  
 
 <center>
@@ -107,7 +108,15 @@
           <%= link_to p.title, project_path(p)  %>
         </td>
         <td>
+          <% if @user.name == p.creator.name%>
+            
+            <h4>You are the creator.</h4>
+            
+          <% else %> 
+          
           <%= link_to p.creator.name, user_path(p.creator) %>
+          
+          <% end %>
         </td>
         <td>
           <%= p.summary %>
@@ -119,6 +128,13 @@
     
   </tbody>
 </table>
+
+<% else %> 
+
+<h3> No Project Collaborations. </h3>
+
+<% end %>
+
 </div>
 
 </center>
