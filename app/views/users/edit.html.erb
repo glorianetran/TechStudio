@@ -4,29 +4,40 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-12 text-center">
-        <h2 class="section-heading text-uppercase">Edit User Profile</h2>
+        <h2 class="section-heading text-uppercase">Edit Project</h2>
       </div>
     </div>
   </div>
 </header>
 
+<%= form_for @user do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this profile from being saved:</h2>
+      <ul>
+      <% user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <div class="Absolute-Center is-Responsive">
     <div class="form-group">
-        change your name
+      <%= f.label :interests %><br />
+      <%= f.text_field :interests, class: 'form-control formFields' %>
     </div>
     <div class="form-group">
-       change your picture 
+      <%= f.label :skills %><br />
+      <%= f.text_field :skills, class: 'form-control formFields', maxlength: 50 %>
     </div>
     <div class="form-group">
-       change your Interests 
+      <%= f.label :bio, "Description" %><br />
+      <%= f.text_area :bio, class: 'form-control formFields', rows: 5, maxlength: 500 %>
     </div>
-    <div class="form-group">
-        change your description
-    </div>
-    
 
-     <%= button_to "Save Profile", user_path, class: "btn-primary pull-left" %>
-    <%= button_to "Cancel", user_path, class: "btn-primary pull-right" %>
-
+    <center> <%= button_to "Update Profile", user_path(@user), :method => :get, class: "btn-primary" %>
+  <% end %>
   </br></br>
-</div>
+   <%= button_to "Delete Profile", user_path(@user), :method => :delete, data: {confirm: "Are you sure you want to delete this project?"}, class: "btn-primary" %>
+  </div>
