@@ -3,8 +3,6 @@
 <div class="container">
   
 
-
-
 <div class="Absolute-Center-Project is-Responsive">
  <center>
    <img src="/images/alfie_logo1.png" class="user-imag" style="width:15%; align:center; border-radius: 50%;">
@@ -24,64 +22,63 @@
        <%= button_to "Edit Profile", edit_user_path(@user), :method => :get, class: "btn-primary" %>
        <br>
   <% end %> 
-  <%= link_to "Back to projects", projects_path, class: "btn-primary" %></p>
+  <%= link_to "Back to projects", projects_path, class: "btn-primary" %>
+</p>
 
 
 
 <br>
-   <h4>Projects created: </h4> 
-   <br>
+<h4>Projects created: </h4> 
+<br>
 <div class="Absolute-Center-Project is-Responsive project-list-info">
 
-<% if @user.created_projects.blank? == false %>
- <div class="project-table-list">  
-<center>
-  <table id="projects">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Summary</th>
-      <% if @user == current_user %>
-      <th>Manage Project</th>
-      <% end %>
-    </tr>
-  </thead>
-
-  <tbody>
-    
-
-
-    <% @user.created_projects.each do |p| %>
+  <% if @user.created_projects.blank? == false %>
+    <div class="project-table-list">  
+    <center>
+    <table id="projects">
+    <thead>
       <tr>
-        <td>
-          <%= link_to p.title, project_path(p)  %>
-        </td>
-        <td>
-          <%= p.summary %>
-        </td>
-
+        <th>Title</th>
+        <th>Summary</th>
           <% if @user == current_user %>
-            <td>         
-            <table>
-                <tr>
-                  <td><%= button_to "EDIT", edit_project_path(p), :method => :get, class: "btn-primary" %></td>
-                  <td><%= button_to "DELETE", edit_project_path(p), :method => :delete, data: {confirm: "Are you sure you want to delete this project?"}, class: "btn-primary" %></td>
-                </tr>
-            </table>
-          </td>
-        <% end %>
-          </tr>
-  <% end %>
-  
-  <% else %>
-    <h3> No Created Projects. </h3>
-  <% end %>
-  </tbody>
-</table>
-<br><br>
-</div>
+            <th>Manage Project</th>
+          <% end %>
+      </tr>
+    </thead>
 
-  <br><br>
+    <tbody>
+      <% @user.created_projects.each do |p| %>
+        <tr>
+          <td>
+            <%= link_to p.title, project_path(p)  %>
+          </td>
+          <td>
+            <%= p.summary %>
+          </td>
+  
+            <% if @user == current_user %>
+              <td>         
+                  <table>
+                    <tr>
+                      <td><%= button_to "EDIT", edit_project_path(p), :method => :get, class: "btn-primary" %></td>
+                      <td><%= button_to "DELETE", project_path(p), :method => :delete, data: {confirm: "Are you sure you want to delete this project?"}, class: "btn-primary" %></td>
+                    </tr>
+              </table>
+            </td>
+          <% end %>
+        </tr>
+    <% end %>
+    
+    <% else %> <!-- else for @user.created_projects --> 
+      <h3> No Created Projects. </h3>
+    <% end %>
+    </tbody>
+    </table>
+  <br>
+  <br>
+  </div>
+
+  <br>
   <h4>Project Collaborations: </h4>
   <br>
   
