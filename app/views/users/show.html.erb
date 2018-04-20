@@ -102,9 +102,9 @@
           <%= link_to p.title, project_path(p)  %>
         </td>
         <td>
-          <% if @user.name == current_user.name %>
-          
-          <%= @user.name %> (You)
+          <% if p.creator.id == current_user.id %>
+
+          <%=@user.name %> (You)
           
           <% else %>
           
