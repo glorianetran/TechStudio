@@ -373,7 +373,7 @@ footer {
   margin-bottom: 2em;
   width: 60%;
   border-radius: 5px;
-  background-color: #484B51;
+  background-color: #2b2b2b;
   min-width: 50em;
   padding: 2em;
   text-align: center;
@@ -399,14 +399,18 @@ footer {
 /* ---------- PROJECTS FILTER ---------- */
 
 
-
+$emerald: #009874;
+$dark: #0c0c0c ;
+$darkgray: #848484;
+$darkergray: #2b2b2b;
+$graytext: #424242;
 
 
 /* ---------- PROJECTS TABLE ---------- */
 .project-table-list{
   margin: auto;
   border-radius: 5px;
-  background-color: #484B51;
+  background-color: #2b2b2b;
   width: 80%;
   min-width: 50em;
   padding: 2em;
@@ -415,6 +419,9 @@ footer {
     text-decoration: underline;
   }
 }
+
+// old light grey #5a5d62
+// old dark grey  #484B51
 
 table {
   font-family: 'Source Sans Pro';
@@ -425,8 +432,8 @@ table {
 }
 
 th {
-  border: 0.02em solid #484B51;
-  background-color: #5a5d62;
+  border: 0.02em solid #2b2b2b;
+  background-color: #373737;
   text-align: center;
   padding: 0.5em;
 }
@@ -437,7 +444,7 @@ td{
 }
 
 tr:nth-child(even) {
-    background-color:  #5a5d62;
+    background-color:  #373737;
 }
 /* ---------- PROJECTS TABLE ---------- */
 
@@ -451,6 +458,7 @@ tr:nth-child(even) {
   margin-top: 10em;
   border-radius: 0.8em;
   background-color: #484B51;
+  
   width: 50%;
   min-width: 200px;
   max-width: 400px;
