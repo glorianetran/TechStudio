@@ -1,24 +1,32 @@
 <div class="container">
-  <div class="Absolute-Center-Project is-Responsive">
+  <div class="project-style-div">
 <center><h1><%= @project.title %></h1></center>
-<div align="right" style="color:gray">Created <%= @project.created_at.strftime("%m-%d-%Y") %></div>
-
+<div align="right">
+    <% if current_user%>
+      <% if @project.creator == current_user %>
+        <%= button_to "Manage project", edit_project_path(@project), :method => :get, class: "btn-primary" %>
+      <%else%>
+        <% if @project.potentials.where(id: current_user).any?  %>
+          <%= button_to "Retract request",reject_path(@project, :user => current_user), :method => :post, class: "btn-default" %>
+        <% elsif @project.collaborators.where(id: current_user).empty? %>
+          <%= button_to "Request to collaborate", request_collab_path(@project), :method => :post, class: "btn-primary" %>
+        <%end%>
+        <%end%>
+    <%else%>
+      Sign in to collaborate
+    <%end%>
+  </div>
+<div align="left" style="color:gray">Created <%= @project.created_at.strftime("%m-%d-%Y") %></div>
 <div align="left">Creator: <%= link_to @project.creator.name, user_path(@project.creator) %></div>
 <div align="left">Collaborators: <%= raw @project.collaborators.map { |c| link_to c.name, user_path(c) }.join(', ') %></div>
 <div align="left">Project Type: <%= @project.project_type %></div>
 <div align="left">Tags: <%= raw @project.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %></div>
 
 <hr/>
-<%= simple_format @project.description %>
+<center><%= simple_format @project.description %></center>
 </br>
-<% if @project.potentials.where(id: current_user).any?  %>
-  <%= button_to "Collab request pending.", request_collab_path(@project), :method => :post, class: "btn-default", :disabled => "disabled" %>
-<% elsif @project.collaborators.where(id: current_user).empty? %>
-  <%= button_to "Request to collaborate", request_collab_path(@project), :method => :post, class: "btn-primary" %>
-<% end %>
 <hr/>
 </div>
-
 <br>
 
 <div class="Absolute-Center-Project is-Responsive">

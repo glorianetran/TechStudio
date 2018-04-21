@@ -3,25 +3,33 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-12 text-center">
-        <h2 class="section-heading text-uppercase">Edit Project</h2>
+        <h2 class="section-heading text-uppercase">Manage <%= @project.title %></h2>
       </div>
     </div>
   </div>
 </header>
 
-<div id="accordion">
-  <div class="card">
-    <div class="card-header" id="potentials">
-      <h5 class="mb-0">
-        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          Manage Potentials
-          
-        </button>
-      </h5>
-    </div>
-    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-      <div class="card-body">
-         <div class="project-table-list">
+<div class="container">
+  <ul id="tabs" class="nav nav-tabs" role="tablist">
+    <li class="nav-item">
+        <button class="btn btn-link collapsed" data-toggle="collapse" data-parent="#accordion" href="#potentials">
+        Manage Potentials</button>
+    </li>
+    
+    <li class="nav-item">
+<button class="btn btn-link collapsed" data-toggle="collapse" data-parent="#accordion" href="#collaborators">
+        Manage Collaborators</button>
+    </li>
+  </ul>
+  </div>
+</div>
+
+
+<div class="panel-group" id="accordion">
+  <div class="panel">
+    <div id="potentials" class="panel-collapse collapse">
+      <div class="panel-body">
+        <div class="project-table-list">
           <table id="projects">
           <!--<thead>-->
           <!--  <tr>-->
@@ -42,7 +50,7 @@
                     <%= button_to "Approve", approve_path(@project, :user => p), :method => :post, class: "btn-primary" %>
                   </td>
                   <td>
-                    <%= button_to "Reject", reject_path(@project, :user => p), :method => :post, class: "btn-primary" %>
+                    <%= button_to "Reject", reject_path(@project, :user => p), :method => :post, class: "btn-primary btn-caution" %>
                   </td>
                 </tr>
               <% end %>
@@ -52,17 +60,10 @@
       </div>
     </div>
   </div>
-  <div class="card">
-    <div class="card-header" id="headingThree">
-      <h5 class="mb-0">
-        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          Manage Collaborators
-        </button>
-      </h5>
-    </div>
-    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-      <div class="card-body">
-         <div class="project-table-list">
+  <div class="panel">
+    <div id="collaborators" class="panel-collapse collapse">
+      <div class="panel-body">
+        <div class="project-table-list">
           <table id="projects">
           <!--<thead>-->
           <!--  <tr>-->
@@ -95,6 +96,7 @@
     </div>
   </div>
 </div>
+
 <%= form_for @project do |f| %>
   <% if @project.errors.any? %>
     <div id="error_explanation">
@@ -107,7 +109,8 @@
     </div>
   <% end %>
   
-  <div class="Absolute-Center is-Responsive">
+  <div class="new-project">
+        <center><h3 class="section-heading text-uppercase">Edit Project</h3> </center>
     <div class="form-group">
       <%= f.label :title %><br />
       <%= f.text_field :title, class: 'form-control formFields' %>
@@ -128,7 +131,7 @@
       <%= f.label :tag_list, "Tags (separated by commas)" %><br />
       <%= f.text_field :tag_list, class: 'form-control formFields' %>
     </div>
-    <center><%= f.submit "Update project", class: "btn-primary"%>
+    <center><%= f.submit "Update project", class: "btn btn-primary js-scroll-triggery"%>
   <% end %>
 </div>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
