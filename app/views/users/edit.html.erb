@@ -21,7 +21,7 @@
     </div>
   <% end %>
 
-  <div class="Absolute-Center is-Responsive">
+  <div class="profile-form">
     <div class="form-group">
       <%= f.label :interests %><br />
       <%= f.text_field :interests, class: 'form-control formFields' %>
@@ -34,8 +34,8 @@
       <%= f.label :bio, "Description" %><br />
       <%= f.text_area :bio, class: 'form-control formFields', rows: 5, maxlength: 500 %>
     </div>
-    <center><%= f.submit "Update Profile", class: "btn-primary"%></center>
+    <center><%= f.submit "Update Profile", class: "btn-primary"%>
   <% end %>
-  </br>
-   <center><%= button_to "Delete Profile", user_path(@user), :method => :delete, data: {confirm: "Are you sure you want to delete this project?"}, class: "btn-primary" %></center>
+   <%= button_to "Delete Account", user_path(@user), :method => :delete, data: {confirm: "Are you sure you want to delete your account? :'("}, class: "btn-primary btn-caution" %>
+</center>
   </div>

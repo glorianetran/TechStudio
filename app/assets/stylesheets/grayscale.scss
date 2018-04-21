@@ -220,6 +220,15 @@ header.masthead {
 .btn-primary:active{
   box-shadow: 0.2em rgba(0, 152, 116, 1) !important;
 }
+
+.btn-link{
+  color:$emerald;
+}
+
+.btn-caution:hover{
+  background-color: red;
+  color: black;
+}
 /* ---------- BUTTON ---------- */
 
 
@@ -414,7 +423,6 @@ footer {
   width: 80%;
   min-width: 50em;
   padding: 0.5em;
-  color: white;
   a { 
     text-decoration: underline;
     font-weight: bold;
@@ -431,6 +439,7 @@ table {
 
 th {
   border: 0.1em solid #e9ebee;
+  color: white;
   background-color: $graytext;
   text-align: center;
   padding: 0.6em;
@@ -454,19 +463,19 @@ tr:nth-child(even) {
 
 /* ---------- PROJECT FORM ---------- */
 
-.new-project {
+.new-project{
   margin: auto;
-  margin-top: 10em;
-  border-radius: 0.8em;
-  background-color: #484B51;
-  
-  width: 50%;
-  min-width: 200px;
-  max-width: 400px;
-  padding: 1em;
-  text-align: center;
-  font-size: 1.2em;
-  text-transform: uppercase;
+  border-radius: 0.4em;
+  border: 0.1em solid $graytext;
+  background-color: #e9ebee;
+  width: 80%;
+  min-width: 50em;
+  padding: 0.5em;
+  color: black;
+  a { 
+    text-decoration: underline;
+    font-weight: bold;
+  }
 }
 
 .formFields { 
@@ -485,6 +494,84 @@ tr:nth-child(even) {
 .form-control::-ms-input-placeholder { color: $graytext; }  /* Microsoft Edge */
 /* ---------- PROJECT FORM ---------- */
 
+
+/* ---------- Profile FORM ---------- */
+
+.profile-form{
+  margin: auto;
+  border-radius: 0.4em;
+  border: 0.1em solid $graytext;
+  background-color: #e9ebee;
+  width: 80%;
+  min-width: 50em;
+  padding: 0.5em;
+  color: black;
+  a { 
+    text-decoration: underline;
+    font-weight: bold;
+  }
+}
+
+.formFields { 
+  background-color: #e0e0e0 !important;
+}
+
+.form-group {
+  margin: 2em 1em;
+}
+
+/*Changes the color of the placeholder text for each browser type*/
+.form-control::-webkit-input-placeholder { color: $graytext; }  /* WebKit, Blink, Edge */
+.form-control:-moz-placeholder { color: $graytext; }  /* Mozilla Firefox 4 to 18 */
+.form-control::-moz-placeholder { color: $graytext; }  /* Mozilla Firefox 19+ */
+.form-control:-ms-input-placeholder { color: $graytext; }  /* Internet Explorer 10-11 */
+.form-control::-ms-input-placeholder { color: $graytext; }  /* Microsoft Edge */
+/* ---------- Profile FORM ---------- */
+
+
+/* ---------- Individual Project style ---------- */
+
+.project-style-div{
+  margin: auto;
+  border-radius: 0.4em;
+  border: 0.1em solid $graytext;
+  background-color: #e9ebee;
+  width: 80%;
+  min-width: 70em;
+  padding: 0.5em;
+  color: black;
+  a { 
+    text-decoration: underline;
+    font-weight: bold;
+  }
+}
+
+.formFields { 
+  background-color: #e0e0e0 !important;
+}
+
+.form-group {
+  margin: 2em 1em;
+}
+
+/*Changes the color of the placeholder text for each browser type*/
+.form-control::-webkit-input-placeholder { color: $graytext; }  /* WebKit, Blink, Edge */
+.form-control:-moz-placeholder { color: $graytext; }  /* Mozilla Firefox 4 to 18 */
+.form-control::-moz-placeholder { color: $graytext; }  /* Mozilla Firefox 19+ */
+.form-control:-ms-input-placeholder { color: $graytext; }  /* Internet Explorer 10-11 */
+.form-control::-ms-input-placeholder { color: $graytext; }  /* Microsoft Edge */
+/* ---------- Individual Project style ---------- */
+
+
+/* ---------- Accordian Style ---------- */
+.panel-body {
+  
+  background-color: #f2f2f2;
+  color: black;
+  
+}
+
+/* ---------- Accordian Style ---------- */
 
 
 hr {

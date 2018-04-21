@@ -50,7 +50,7 @@
                     <%= button_to "Approve", approve_path(@project, :user => p), :method => :post, class: "btn-primary" %>
                   </td>
                   <td>
-                    <%= button_to "Reject", reject_path(@project, :user => p), :method => :post, class: "btn-primary" %>
+                    <%= button_to "Reject", reject_path(@project, :user => p), :method => :post, class: "btn-primary btn-caution" %>
                   </td>
                 </tr>
               <% end %>
@@ -109,8 +109,7 @@
     </div>
   <% end %>
   
-  <div class="project-table-list">
-  <div class="Absolute-Center is-Responsive">
+  <div class="new-project">
         <center><h3 class="section-heading text-uppercase">Edit Project</h3> </center>
     <div class="form-group">
       <%= f.label :title %><br />
@@ -132,8 +131,7 @@
       <%= f.label :tag_list, "Tags (separated by commas)" %><br />
       <%= f.text_field :tag_list, class: 'form-control formFields' %>
     </div>
-    <center><%= f.submit "Update project", class: "btn-primary"%>
+    <center><%= f.submit "Update project", class: "btn btn-primary js-scroll-triggery"%>
   <% end %>
-</div>
 </div>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

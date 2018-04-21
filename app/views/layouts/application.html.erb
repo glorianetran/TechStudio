@@ -38,12 +38,14 @@
 
 <!-- BODY -->
   <body>
+    <center>
     <div style="height:5em;" class="span12"></div>
     <div id="container">
       <% flash.each do |name, msg| %>
         <%= content_tag :div, msg, id: "flash_#{name}" %>
       <% end %>
     </div>
+    </center>
     <div>
       <%= yield %>
     </div>
