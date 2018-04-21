@@ -18,13 +18,12 @@ TechStudio was created for a Software Engineering course at Mills College in 201
 3. Populate the database:
   * In the console, run ```rails db:migrate```
   * Then ```rails db:seed```
-4. To view database data
-  * Type ```rails console``` in the console.
-  * Then enter CRUD operations such as ```Project.all```
-  * Our current tables are Project, Tagging and Tag.
 
 ### Project Details
 * Rails Version: 5.1.5
 * Ruby Version: 2.4.0
 * BootStrap: Twitter Bootstrap, BootStrap sass
 * Third-Party User Authentication: Google
+
+### Notes
+For security purposes, this project was created on BitBucket. 
