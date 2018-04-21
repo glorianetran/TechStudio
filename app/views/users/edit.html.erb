@@ -34,8 +34,8 @@
       <%= f.label :bio, "Description" %><br />
       <%= f.text_area :bio, class: 'form-control formFields', rows: 5, maxlength: 500 %>
     </div>
-    <center><%= f.submit "Update Profile", class: "btn-primary"%>
+    <center><%= f.submit "Update Profile", class: "btn-primary"%></br></br>
   <% end %>
-   <%= button_to "Delete Account", user_path(@user), :method => :delete, data: {confirm: "Are you sure you want to delete your account? :'("}, class: "btn-primary btn-caution" %>
+   <%= button_to "Delete Account", user_path(@user), :method => :delete, data: {confirm: "Are you sure you want to delete your account? All of your created projects will be gone forever. :'("}, class: "btn-primary btn-caution" %>
 </center>
   </div>
