@@ -17,7 +17,7 @@ body {
   height: 100%;
   color: $graytext;
   background-color: #f2f2f2;
-  a{ color: white; }
+  a{ color: $graytext; }
    a:hover{ color: $emerald; }
 }
 
@@ -106,6 +106,11 @@ a {
 
 .navbar-default .navbar-nav > li > a {
   color: #fff;
+  font-family: 'Source Sans Pro';
+}
+
+.nav > li > a {
+  color: white;
   font-family: 'Source Sans Pro';
 }
 
@@ -372,8 +377,9 @@ footer {
   margin: auto;
   margin-bottom: 2em;
   width: 60%;
-  border-radius: 5px;
-  background-color: #484B51;
+  border-radius: 0.4em;
+  background-color: #e9ebee;
+  border: 0.11em solid $emerald;
   min-width: 50em;
   padding: 2em;
   text-align: center;
@@ -399,20 +405,19 @@ footer {
 /* ---------- PROJECTS FILTER ---------- */
 
 
-
-
-
 /* ---------- PROJECTS TABLE ---------- */
 .project-table-list{
   margin: auto;
-  border-radius: 5px;
-  background-color: #484B51;
+  border-radius: 0.4em;
+  border: 0.1em solid $graytext;
+  background-color: #e9ebee;
   width: 80%;
   min-width: 50em;
-  padding: 2em;
+  padding: 0.5em;
   color: white;
   a { 
     text-decoration: underline;
+    font-weight: bold;
   }
 }
 
@@ -425,19 +430,22 @@ table {
 }
 
 th {
-  border: 0.02em solid #484B51;
-  background-color: #5a5d62;
+  border: 0.1em solid #e9ebee;
+  background-color: $graytext;
   text-align: center;
-  padding: 0.5em;
+  padding: 0.6em;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
 }
 
 td{
+  color: $graytext;
   text-align: left;
   padding: 1.5em;
 }
 
 tr:nth-child(even) {
-    background-color:  #5a5d62;
+    background-color:  #dee0e2;
 }
 /* ---------- PROJECTS TABLE ---------- */
 
@@ -451,6 +459,7 @@ tr:nth-child(even) {
   margin-top: 10em;
   border-radius: 0.8em;
   background-color: #484B51;
+  
   width: 50%;
   min-width: 200px;
   max-width: 400px;
@@ -458,7 +467,6 @@ tr:nth-child(even) {
   text-align: center;
   font-size: 1.2em;
   text-transform: uppercase;
-  color: white;
 }
 
 .formFields { 
@@ -502,3 +510,9 @@ img::selection {
 img::-moz-selection {
   background: transparent;
 }
+
+a#sign_in {
+   a { color: white; }
+   a:hover{ color: $emerald; }
+}
+
