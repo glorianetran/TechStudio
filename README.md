@@ -15,9 +15,7 @@ TechStudio was created for a Software Engineering course at Mills College in 201
 ### Viewing our Repo
 1. Clone Repository into your environment.
 2. In the TechStudio directory run `bundle install`
-3. Populate the database:
-  * In the console, run ```rails db:migrate```
-  * Then ```rails db:seed```
+3. Populate the database: In the console, run ```rails db:migrate``` then ```rails db:seed```
 
 ### Project Details
 * Rails Version: 5.1.5
