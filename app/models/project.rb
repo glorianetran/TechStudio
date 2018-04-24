@@ -6,6 +6,10 @@ class Project < ApplicationRecord
     has_many :collaborators, -> {where(projectusers: {collaborator: true})}, :through => :projectusers, :class_name=> 'User', :source => :user
     has_many :potentials, -> {where(projectusers: {collaborator: false})}, :through => :projectusers, :class_name=> 'User', :source => :user
     
+    validates :title, :presence => true
+    validates :summary, :presence => true
+    validates :description, :presence => true
+    
     def self.tagged_with(name)
         Tag.find_by!(name: name).projects
     end
@@ -45,7 +49,6 @@ class Project < ApplicationRecord
     
     # potential methods
     def add_potential=(user)
-        #Projectuser.where(user_id: user).create!(:project_id => self.id, :user_id => user, :collaborator => false, :creator => false)
         Projectuser.where(user_id: user).where(project_id: self.id).first_or_create!(:project_id => self.id, :user_id => user, :collaborator => false, :creator => false)
     end
     
@@ -56,8 +59,4 @@ class Project < ApplicationRecord
     def approve(user)
         Projectuser.where(user_id: user).update(collaborator: true)
     end
-    
-    # def reject(user_id)
-    #     Projectuser.destroy(user_id);
-    # end
 end
