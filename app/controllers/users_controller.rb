@@ -2,7 +2,13 @@ class UsersController < ApplicationController
   before_action :store_return_to
   
   def edit
-    @user = User.find(params[:id])
+    user = User.find(params[:id])
+    if current_user == user
+      @user = user
+    else
+      flash[:notice] = "You are not authorized to edit this profile."
+      redirect_to user_path(user)
+    end 
   end
   
   def show
