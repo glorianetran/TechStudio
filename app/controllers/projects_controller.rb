@@ -50,8 +50,13 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     user = User.find(params[:user]).name
     Projectuser.where(project_id: params[:id]).find_by(user_id: params[:user]).destroy
-    flash[:notice] = "Collaborator #{user} deleted."
-    redirect_to edit_project_path(@project)
+    if User.find(params[:user]).name == current_user.name
+      flash[:notice] = "You are no longer a collaborator on #{@project}."
+      redirect_to project_path(@project)
+    else  
+      flash[:notice] = "#{user} is no longer a collaborator."
+      redirect_to edit_project_path(@project)
+    end
   end
 
   def show

@@ -103,6 +103,10 @@
       <th>Title</th>
       <th>Creator</th>
       <th>Summary</th>
+      <% if current_user%>
+        <th>Manage</th>
+      <%end%>
+      
     </tr>
   </thead>
 
@@ -131,6 +135,15 @@
         <td>
           <%= p.summary %>
         </td>
+        <% if current_user != p.creator %>
+          <td>
+          <center>
+          <%= button_to "RETRACT COLLAB",reject_path(p, :user => current_user), :method => :post, data: {confirm: "Are you sure you don't want to be a collaborator?"}, class: "btn-primary" %>
+          </center>
+          </td>
+        <%elsif current_user == p.creator%>
+          <td><center><%= button_to "MANAGE", edit_project_path(p), :method => :get, class: "btn-primary" %></center></td>
+        <%end%> 
     
           </tr>
   <% end %>

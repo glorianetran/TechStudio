@@ -26,7 +26,7 @@
           <li><%= link_to "Sign out", signout_path, id: "sign_out" %></li>
         </ul>
         <ul class="nav navbar-right">
-          <li><%= link_to current_user.name, user_path(current_user) %></li>
+          <li><%= link_to "My Account", user_path(current_user) %></li>
         </ul>
       <% else %>
         <ul class="nav navbar-right">
@@ -40,7 +40,7 @@
   <body>
     <center>
     <div style="height:5em;" class="span12"></div>
-    <div id="container">
+    <div class= "notice">
       <% flash.each do |name, msg| %>
         <%= content_tag :div, msg, id: "flash_#{name}" %>
       <% end %>
@@ -53,8 +53,9 @@
   
 <!-- FOOTER -->
   <footer>
+    <br>
     <div class="row-footer">
-        <span class="copyright">Copyright &copy; TECHSTUDIO 2018</span>
+        <span class="copyright">Copyright &copy; TECHSTUDIO 2018 </span>
     </div>
   </footer>
 
