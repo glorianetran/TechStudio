@@ -11,7 +11,12 @@ class ProjectsController < ApplicationController
   end
 
   def new
+    if current_user 
      @project = Project.new
+    else
+      flash[:notice] = "You must be signed in to create a new project."
+      redirect_to projects_path
+    end
   end
   
   def request_collab
