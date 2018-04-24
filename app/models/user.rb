@@ -2,6 +2,10 @@ class User < ActiveRecord::Base
     has_many :projectusers
     has_many :potential_projects, ->{where(projectusers: {collaborator: true})}, through: :projectusers, :class_name=> 'Project', :source => :project
     has_many :collab_projects, ->{ where(projectusers: {collaborator: true})}, through: :projectusers, :class_name=> 'Project', :source => :project
+	has_many :chatroom_users
+	has_many :chatrooms, through: :chatroom_users
+	has_many :messages
+	
 	def self.find_or_create_from_auth_hash(auth)
 		where(provider: auth.provider, uid: auth.uid).first_or_initialize.tap do |user|
           user.provider = auth.provider

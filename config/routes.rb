@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :chatrooms
   get 'sessions/create'
 
   get 'sessions/destroy'
