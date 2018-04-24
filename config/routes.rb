@@ -8,6 +8,10 @@ Rails.application.routes.draw do
 
   resources :projects
   
+  resources :chatrooms do
+    resource :chatroom_users
+  end
+  
   get 'projects/' => redirect('projects/index')
   
   # collaborators
