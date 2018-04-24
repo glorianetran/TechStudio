@@ -72,7 +72,13 @@ class ProjectsController < ApplicationController
   end
   
   def edit
-    @project = Project.find(params[:id])
+    project = Project.find(params[:id])
+    if current_user == project.creator
+      @project = project
+    else 
+      flash[:notice] = "You are not authorized to edit this project."
+      redirect_to project_path(project)
+    end
   end
   
   def update 
