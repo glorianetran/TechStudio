@@ -11,7 +11,12 @@ class ProjectsController < ApplicationController
   end
 
   def new
+    if current_user 
      @project = Project.new
+    else
+      flash[:notice] = "You must be signed in to create a new project."
+      redirect_to projects_path
+    end
   end
   
   def request_collab
@@ -67,7 +72,13 @@ class ProjectsController < ApplicationController
   end
   
   def edit
-    @project = Project.find(params[:id])
+    project = Project.find(params[:id])
+    if current_user == project.creator
+      @project = project
+    else 
+      flash[:notice] = "You are not authorized to edit this project."
+      redirect_to project_path(project)
+    end
   end
   
   def update 
