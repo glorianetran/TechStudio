@@ -103,7 +103,7 @@
       <th>Title</th>
       <th>Creator</th>
       <th>Summary</th>
-      <% if current_user%>
+      <% if current_user == @user%>
         <th>Manage</th>
       <%end%>
       
@@ -135,7 +135,7 @@
         <td>
           <%= p.summary %>
         </td>
-        <% if current_user != p.creator %>
+        <% if current_user != p.creator && current_user == @user %>
           <td>
           <center>
           <%= button_to "RETRACT COLLAB",reject_path(p, :user => current_user), :method => :post, data: {confirm: "Are you sure you don't want to be a collaborator?"}, class: "btn-primary" %>
