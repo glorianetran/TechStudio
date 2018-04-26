@@ -7,5 +7,5 @@ test:
 
 production:
   adapter: redis
-  url: redis://localhost:6379/1
+  url: redis://h:pe0916e876662f741e4a5dd033dce25e2397d8b375be8d21b65cf3e1d36782457@ec2-18-232-216-63.compute-1.amazonaws.com:37899
   channel_prefix: TechStudio_production
