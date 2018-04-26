@@ -1,7 +1,9 @@
 class ChatroomUsersController < ApplicationController 
     before_action :set_chatroom 
 
+    # join happens here
     def create  
+        # when users join a group automatically do this, when creator makes a group add them
         @chatroom_user = @chatroom.chatroom_users.where(user_id: current_user.id).first_or_create
         redirect_to @chatroom 
     end

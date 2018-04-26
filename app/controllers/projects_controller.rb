@@ -64,6 +64,7 @@ class ProjectsController < ApplicationController
     @project = Project.find(id)
   end
   
+  # here we make the chatroom
   def create
     @project = Project.new(project_params)
     if @project.save

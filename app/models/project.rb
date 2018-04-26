@@ -5,6 +5,7 @@ class Project < ApplicationRecord
     has_many :users, through: :projectusers
     has_many :collaborators, -> {where(projectusers: {collaborator: true})}, :through => :projectusers, :class_name=> 'User', :source => :user
     has_many :potentials, -> {where(projectusers: {collaborator: false})}, :through => :projectusers, :class_name=> 'User', :source => :user
+    has_one :chatroom
     
     validates :title, :presence => true
     validates :summary, :presence => true
@@ -13,7 +14,7 @@ class Project < ApplicationRecord
     def self.tagged_with(name)
         Tag.find_by!(name: name).projects
     end
-
+ 
     def self.tag_counts
         Tag.select('tags.id, tags.name, count(taggings.tag_id) as count').joins(:taggings).group("taggings.tag_id, tags.id, tags.name")
     end
