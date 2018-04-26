@@ -71,7 +71,20 @@ class ProjectsController < ApplicationController
       @project.add_creator=(current_user.id)
       @project.tag_list=(project_params[:tag_list])
       flash[:notice] = "#{@project.title} was successfully created."
-      redirect_to projects_path
+      @chatroom = Chatroom.new
+      @chatroom.project = @project # making connection between project and chatroom
+      @chatroom.name = @project.title
+  
+      respond_to do |format|
+        if @chatroom.save
+          format.html { redirect_to projects_path}
+          format.json { render :show, status: :created, location: @chatroom }
+        else
+          format.html { render :new }
+          format.json { render json: @chatroom.errors, status: :unprocessable_entity }
+        end
+      end
+      #redirect_to projects_path
     else
       render :new
     end
