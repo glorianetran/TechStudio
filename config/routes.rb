@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :chatrooms
   get 'sessions/create'
 
   get 'sessions/destroy'
@@ -6,6 +7,11 @@ Rails.application.routes.draw do
   resources :users
 
   resources :projects
+  
+  resources :chatrooms do
+    resource :chatroom_users
+    resources :messages
+  end
   
   get 'projects/' => redirect('projects/index')
   
