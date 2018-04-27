@@ -49,13 +49,14 @@ class ProjectsController < ApplicationController
   
   def delete_collaborator
     @project = Project.find(params[:id])
-    user = User.find(params[:user]).name
+    user = User.find(params[:user])
+    @project.chatroom.chatroom_users.where(user_id: user.id).destroy_all
     Projectuser.where(project_id: params[:id]).find_by(user_id: params[:user]).destroy
-    if User.find(params[:user]).name == current_user.name
-      flash[:notice] = "You are no longer a collaborator on #{@project}."
+    if user.id == current_user.id
+      flash[:notice] = "You are no longer a collaborator on #{@project.name}."
       redirect_to project_path(@project)
     else  
-      flash[:notice] = "#{user} is no longer a collaborator."
+      flash[:notice] = "#{user.name} is no longer a collaborator."
       redirect_to edit_project_path(@project)
     end
   end

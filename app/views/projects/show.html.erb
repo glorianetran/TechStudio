@@ -7,7 +7,7 @@
         <%= button_to "Manage project", edit_project_path(@project), :method => :get, class: "btn-primary" %>
       <%else%>
         <% if @project.collaborators.where(id: current_user).any?  %>
-          <%= button_to "Retract collab",reject_path(@project, :user => current_user), :method => :post, data: {confirm: "Are you sure you don't want to be a collaborator?"}, class: "btn-default" %>
+          <%= button_to "Retract collab",delete_collaborator_path(@project, :user => current_user), :method => :post, data: {confirm: "Are you sure you don't want to be a collaborator?"}, class: "btn-default" %>
         <% elsif @project.potentials.where(id: current_user).any?  %>
           <%= button_to "Retract request",reject_path(@project, :user => current_user), :method => :post, class: "btn-default" %>
         <% elsif @project.collaborators.where(id: current_user).empty? %>
