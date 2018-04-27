@@ -27,9 +27,10 @@ class ProjectsController < ApplicationController
   
   def approve
     @project = Project.find(params[:id])
-    user = User.find(params[:user]).name
+    user = User.find(params[:user])
     @project.approve(params[:user])
-    flash[:notice] = "#{user} is now a collaborator."
+    @project.chatroom.chatroom_users.where(user_id: user.id).first_or_create
+    flash[:notice] = "#{user.name} is now a collaborator."
     redirect_to edit_project_path(@project)
   end
   
@@ -64,7 +65,6 @@ class ProjectsController < ApplicationController
     @project = Project.find(id)
   end
   
-  # here we make the chatroom
   def create
     @project = Project.new(project_params)
     if @project.save
@@ -77,6 +77,7 @@ class ProjectsController < ApplicationController
   
       respond_to do |format|
         if @chatroom.save
+          @chatroom.chatroom_users.where(user_id: current_user.id).first_or_create
           format.html { redirect_to projects_path}
           format.json { render :show, status: :created, location: @chatroom }
         else
@@ -84,7 +85,6 @@ class ProjectsController < ApplicationController
           format.json { render json: @chatroom.errors, status: :unprocessable_entity }
         end
       end
-      #redirect_to projects_path
     else
       render :new
     end
