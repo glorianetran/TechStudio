@@ -53,7 +53,7 @@ class ProjectsController < ApplicationController
     @project.chatroom.chatroom_users.where(user_id: user.id).destroy_all
     Projectuser.where(project_id: params[:id]).find_by(user_id: params[:user]).destroy
     if user.id == current_user.id
-      flash[:notice] = "You are no longer a collaborator on #{@project.name}."
+      flash[:notice] = "You are no longer a collaborator on #{@project.title}."
       redirect_to project_path(@project)
     else  
       flash[:notice] = "#{user.name} is no longer a collaborator."
@@ -104,6 +104,7 @@ class ProjectsController < ApplicationController
   def update 
     @project = Project.find(params[:id])
     if @project.update_attributes(project_params)
+      @project.chatroom.update(:name => @project.title)
       flash[:notice] = "#{@project.title} was successfully updated."
       redirect_to project_path(@project)
     else
@@ -112,7 +113,6 @@ class ProjectsController < ApplicationController
   end
   
   def destroy
-    # @projectusers = Projectuser.find(params[:id])
     Projectuser.where(project_id: params[:id]).each do |p|
       p.destroy
     end
@@ -120,9 +120,21 @@ class ProjectsController < ApplicationController
       t.destroy
     end
     @project = Project.find(params[:id])
+    ChatroomUser.where(chatroom_id: @project.chatroom.id).each do |c|
+      c.destroy
+    end
+    Message.where(chatroom_id: @project.chatroom.id).each do |m|
+      m.destroy
+    end
+    @project.chatroom.destroy
     @project.destroy
     flash[:notice] = "#{@project.title} was deleted."
-    redirect_to user_path(current_user)
+    respond_to do |format|
+      format.html { redirect_to user_path(current_user)}
+      format.json { head :no_content }
+    end
+
+    # redirect_to user_path(current_user)
   end
   
   private
