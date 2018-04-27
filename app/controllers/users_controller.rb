@@ -42,6 +42,7 @@ class UsersController < ApplicationController
         m.destroy
       end
       project.chatroom.destroy
+      project.destroy
     end
     Projectuser.where(user_id: params[:id]).each do |p|
       p.destroy
@@ -52,7 +53,7 @@ class UsersController < ApplicationController
     Message.where(user_id: user.id).each do |m|
       m.destroy
     end
-
+    
     User.find(user.id).destroy
     flash[:notice] = "#{user.name} was deleted."
     redirect_to '/'
