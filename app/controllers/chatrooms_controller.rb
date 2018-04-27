@@ -4,13 +4,23 @@ class ChatroomsController < ApplicationController
   # GET /chatrooms
   # GET /chatrooms.json
   def index
-    @chatrooms = Chatroom.all
+    if current_user
+      @chatrooms = Chatroom.all
+    else
+      flash[:notice] = "You must be signed in to view chatrooms."
+      redirect_to '/'
+    end
   end
 
   # GET /chatrooms/1
   # GET /chatrooms/1.json
   def show
+   if @chatroom.project.collaborators.where(id: current_user).any? 
     @messages = @chatroom.messages.order(created_at: :desc).limit(100).reverse.each
+   else 
+     flash[:notice] = "You do not have access to this chatroom."
+     redirect_to chatrooms_path
+   end
   end
 
   # GET /chatrooms/new
