@@ -8,10 +8,11 @@
       Click on a user to see other projects they have created.<br/>
       Click on a project to see more information.<br/>
       Click on the 'New Project' to create your own.<br/>
+    </h3>  
   </div>
   
   <div class="project-table-filter">
-    <div style="width:100%; font-size: 1.1em">Click a tag to filter projects</div>
+    <div style="width:100%; font-size: 1.3em">Click a tag to filter projects</div>
     
     <div id="tag_cloud">
       <% tag_cloud Project.tag_counts, %w[s m l] do |tag, css_class| %>
@@ -29,7 +30,9 @@
       
   </div>
   
-  <div class="project-table-list">
+  
+  <div class="project-table-list-container">
+    <div class="project-table-list">
       <table id="projects">
         <thead>
           <tr>
@@ -54,6 +57,7 @@
             <% end %>
           </tbody>
       </table>
+    </div>
   </div>
 
 </html>
