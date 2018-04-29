@@ -620,3 +620,79 @@ a#sign_in {
    a:hover{ color: $emerald; }
 }
 
+
+
+/* ---------- Chatroom sidebar style ---------- */
+.sidenav {
+    position: fixed;
+    background: #dee0e2;
+    font-size: 1.2em;
+    padding: 8px 0;
+    top: 70px; left: 70px;
+    margin:auto;
+}
+
+.sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 1.1em;
+    display: block;
+    color: $emerald;
+}
+
+.sidenav li {
+  
+  color: $emerald;
+  
+}
+
+
+.sidenav a:hover {
+    color: $emerald;
+}
+
+.main {
+    margin-left: 140px; /* Same width as the sidebar + left position in px */
+    font-size: 28px; /* Increased text to enable scrolling */
+    padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+/* ---------- Chatroom sidebar style ---------- */
+
+
+/* ---------- Chatroom chat style ---------- */
+
+.chatroom-style-div{
+  margin: 1em 20em 20em 1em;
+  border-radius: 0.4em;
+  border: 0.1em solid $graytext;
+  background-color: #e9ebee;
+  width: 70%;
+  min-width: 50em;
+  padding: 0.5em;
+  color: black;
+  display:block;
+  a { 
+    text-decoration: underline;
+    font-weight: bold;
+  }
+  
+  hr{
+    height: 0.053em;
+    border-top: 0.03em solid gray;
+  }
+}
+
+.message-style-div{
+   hr {
+     padding: 0em;
+     margin: 1em 1em 1em 0em;
+      border-top: 0.03em solid gray;
+    }
+}
+
+/* ---------- Chatroom chat style ---------- */
