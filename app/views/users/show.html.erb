@@ -166,4 +166,86 @@
         </div>
       </div>
   </div>
+<<<<<<< HEAD
 </html>
+=======
+
+  <br>
+  <h4>Project Collaborations: </h4>
+  <br>
+  
+<% if @user.collab_projects.blank? == false %>
+   <div class="project-table-list">  
+
+<center>
+  <table id="projects">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Creator</th>
+      <th>Summary</th>
+      <% if current_user == @user%>
+        <th>Manage</th>
+      <%end%>
+      
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user.collab_projects.each do |p| %>
+      <tr>
+        <td>
+          <%= link_to p.title, project_path(p)  %>
+        </td>
+        <td>
+          <% if current_user != nil %>
+            <% if p.creator.id == current_user.id %>
+  
+            <%= p.creator.name %> (You)
+            
+            <% else %>
+            
+            <%= link_to p.creator.name, user_path(p.creator) %>
+            
+            <% end %>
+            
+          <% else %> 
+              <%= link_to p.creator.name, user_path(p.creator) %>
+          <% end %>
+        </td>
+        <td>
+          <%= p.summary %>
+        </td>
+        <% if current_user != p.creator && current_user == @user %>
+          <td>
+          <center>
+          <%= button_to "RETRACT COLLAB",delete_collaborator_path(p, :user => current_user), :method => :post, data: {confirm: "Are you sure you don't want to be a collaborator?"}, class: "btn-primary" %>
+          </center>
+          </td>
+        <%elsif current_user == p.creator%>
+          <td><center><%= button_to "MANAGE", edit_project_path(p), :method => :get, class: "btn-primary" %></center></td>
+        <%end%> 
+    
+          </tr>
+  <% end %>
+    
+    
+  </tbody>
+</table>
+
+<% else %> 
+
+<h3> No Project Collaborations. </h3>
+
+<% end %>
+
+</div>
+
+</center>
+
+</div>
+
+</div> 
+
+</div>
+>>>>>>> 8c0815f3ccd5e88d8bbb35415865bed28f7ada36

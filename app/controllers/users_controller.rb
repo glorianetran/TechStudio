@@ -35,11 +35,25 @@ class UsersController < ApplicationController
       Tagging.where(project_id: project.id).each do |t|
         t.destroy
       end
+      ChatroomUser.where(chatroom_id: project.chatroom.id).each do |c|
+        c.destroy
+      end
+      Message.where(chatroom_id: project.chatroom.id).each do |m|
+        m.destroy
+      end
+      project.chatroom.destroy
       project.destroy
     end
     Projectuser.where(user_id: params[:id]).each do |p|
       p.destroy
     end
+    ChatroomUser.where(user_id: user.id).each do |c|
+      c.destroy
+      end
+    Message.where(user_id: user.id).each do |m|
+      m.destroy
+    end
+    
     User.find(user.id).destroy
     flash[:notice] = "#{user.name} was deleted."
     redirect_to '/'

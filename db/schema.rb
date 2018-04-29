@@ -23,8 +23,10 @@ ActiveRecord::Schema.define(version: 20180424162029) do
 
   create_table "chatrooms", force: :cascade do |t|
     t.string "name"
+    t.integer "project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_chatrooms_on_project_id"
   end
 
   create_table "messages", force: :cascade do |t|

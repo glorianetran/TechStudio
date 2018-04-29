@@ -23,7 +23,9 @@
         <li><a href="/">Home</a></li>
         <li><a href="/about">About</a></li>
         <li><a href="/projects">Projects</a></li>
-        <li><a href="/chatrooms">Chat</a></li>
+        <% if current_user %>
+          <li><a href="/chatrooms">Chat</a></li>
+        <% end %>
       </ul>
       
       <% if current_user %>
