@@ -7,14 +7,16 @@
               <br>
               <div>Collaborators: <%= raw @chatroom.project.collaborators.map { |c| link_to c.name, user_path(c) }.join(' ') %></div>
             <hr>
-      Other Chatrooms
-      <ul>
-        <% current_user.chatrooms.each do |chatroom| %>
-        <li>
-          <%= link_to chatroom.name, chatroom_path(chatroom) %>
-          </li>
-        <% end %> 
-      </ul>
+            <div class ="otherchatrooms">
+              Other Chatrooms
+              <ul>
+                <% current_user.chatrooms.each do |chatroom| %>
+                <li>
+                  <%= link_to chatroom.name, chatroom_path(chatroom) %>
+                  </li>
+                <% end %> 
+              </ul>
+            </div>
       </div>
     </div>
     <div class="col-sm-9">

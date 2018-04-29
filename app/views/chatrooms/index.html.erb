@@ -8,28 +8,28 @@
   </div>
 
 
+
 <div class="chat">
-  <div class="row">
     <div class="project-table-list">
+      <% if current_user %>
         <table id="chatrooms">
           <thead>
             <tr>
-              <th>Title</th>
-              <th>Creator</th>
+              <th>Projects</th>
             </tr>
             </thead>
             <tbody>
-            <% @chatrooms.each do |chatroom| %>
+              <% current_user.chatrooms.each do |chatroom| %>
                 <tr>
-                  <td><%= chatroom.name %></td>
-                  <td><%= link_to 'Chat', chatroom %>
+                  <td><%= link_to chatroom.name, chatroom_path(chatroom), data: {behavior: "chatroom-link", chatroom_id: chatroom.id} %>
                   </td>
                 </tr>
               <% end %>
             </tbody>
         </table>
+        <% else %>
+          You have to login to chat.
+       <% end %>
     </div>
-      
-      
   </div>
       

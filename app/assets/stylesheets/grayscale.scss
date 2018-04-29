@@ -641,12 +641,25 @@ a#sign_in {
 /* ---------- Chatroom sidebar style ---------- */
 .sidenav {
     position: fixed;
-    background: #dee0e2;
+    background: white;
     font-size: 1.2em;
     padding: 8px 0;
     top: 70px; left: 70px;
     margin:auto;
+    max-width: 15em;
+    max-height: 33em;
+
+    
+    .otherchatrooms{
+    max-height: 15em;
+      overflow-y: auto;
+    }
+    
 }
+
+
+
+
 
 .sidenav a {
     padding: 6px 8px 6px 16px;
@@ -686,7 +699,7 @@ a#sign_in {
   margin: 1em 20em 20em 1em;
   border-radius: 0.4em;
   border: 0.1em solid $graytext;
-  background-color: #e9ebee;
+  background-color: white;
   width: 70%;
   min-width: 50em;
   padding: 0.5em;
