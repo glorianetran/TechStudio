@@ -31,8 +31,8 @@
       
         <ul class="nav navbar-nav navbar-test" style="float: right">
           <% if current_user %>
-            <li><%= link_to "Sign out", signout_path, id: "sign_out" %></li>
             <li><%= link_to "My Account", user_path(current_user) %></li>
+            <li><%= link_to "Sign out", signout_path, id: "sign_out" %></li>
           <% else %>
             <li><%= link_to"Sign in with Google", "/auth/google_oauth2", id: "sign_in" %></li>
           <% end %>
