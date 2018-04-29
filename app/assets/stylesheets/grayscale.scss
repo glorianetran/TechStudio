@@ -67,13 +67,6 @@ a {
     margin-left: -1em;
   }
   
-  .navbar-nav{ float: left;}
-  
-  .navbar-right {
-    float: right;
-    color: white;
-  }
-  
   @media(min-width:62em) {
     padding-top: 1.250em;
     padding-bottom: 1.250em;
@@ -91,6 +84,10 @@ a {
   }
 }
 
+.navbar-default .navbar-brand {
+  color: $emerald;
+}
+
 .navbar-default {
   background-color: $dark; // navbar color
   border: none;
@@ -103,7 +100,7 @@ a {
 }
 
 .navbar-default .navbar-nav > li > a {
-  color: #fff;
+  color: white;
   font-family: 'Source Sans Pro';
 }
 
