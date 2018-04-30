@@ -19,8 +19,9 @@ body {
   height: 100%;
   color: $graytext;
   background-color: $graybackground;
-  a{ color: $graytext; }
-   a:hover{ color: $emerald; }
+  // overflow: hidden;
+  a { color: $graytext; }
+  a:hover{ color: $emerald; }
 }
 
 html {
@@ -48,6 +49,8 @@ a {
     color: darken($emerald, 50%);
   }
 }
+
+a:hover,a:focus{text-decoration: none;}
 
 
 
@@ -189,12 +192,15 @@ header.masthead {
 .account-table-btn{
   padding: 0.3em 1em;
   border-radius: 0.25em;
-  font-size: 0.7em;
+  font-size: 1em;
   font-weight: bold;
   font-family: "Inconsolata";
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
-.btn-primary {
+.btn-primary{
   background-color: rgba(0, 0, 0, 0.7);
   border-color: transparent;
 }
@@ -203,7 +209,7 @@ header.masthead {
   border-color: transparent;
   color: white;
 }
-.btn-primary:active{ box-shadow: 0.2em rgba(0, 152, 116, 1) !important;}
+.btn-primary:active { box-shadow: 0.2em rgba(0, 152, 116, 1) !important;}
 
 .btn-link{ color:$emerald;}
 
@@ -421,22 +427,21 @@ tr:nth-child(even) { background-color:  $graybackground;}
 
 .new-project{
   margin: auto;
-  border-radius: 0.4em;
-  border: 0.1em solid $graytext;
-  background-color: #e9ebee;
-  width: 80%;
+  margin-bottom: 1em;
+  background-color: $softwhite;
+  width: 75%;
   min-width: 50em;
-  padding: 0.5em;
-  color: black;
-  a { 
-    text-decoration: underline;
-    font-weight: bold;
-  }
+  padding: 1em;
+  color: $graytext;
 }
 
 .formFields { background-color: #e0e0e0 !important;}
 
-.form-group { margin: 2em 1em;}
+.form-group { 
+  margin: 2em 1em;
+  font-size: 1.1em;
+  text-transform: uppercase;
+}
 
 /*Changes the color of the placeholder text for each browser type*/
 .form-control::-webkit-input-placeholder { color: $graytext; }  /* WebKit, Blink, Edge */
@@ -466,18 +471,19 @@ tr:nth-child(even) { background-color:  $graybackground;}
 
 .formFields { background-color: #e0e0e0 !important;}
 
-.form-group { margin: 2em 1em;}
 /* ---------- Profile FORM ---------- */
 
 
 /* ---------- ACCOUNT ---------- */
 .account-container {
   width: 80%;
+  height: 100%;
   margin: auto;
+  margin-bottom: 2em;
 }
 
 .account-header {
-  margin-top: 10em;
+  margin-top: 6em;
   text-align: center;
   margin-bottom: 4em;
 }
@@ -499,9 +505,9 @@ tr:nth-child(even) { background-color:  $graybackground;}
   }
 }
 
-a:hover,a:focus{text-decoration: none;}
-
-.tab { border-radius: 0.25em};
+.tab { 
+  border-radius: 0.25em;
+}
 
 .tab .nav-tabs{border-bottom: none;}
 
@@ -567,7 +573,6 @@ a:hover,a:focus{text-decoration: none;}
 
 .formFields { background-color: #e0e0e0 !important;}
 
-.form-group { margin: 2em 1em;}
 /* ---------- Individual Project style ---------- */
 
 

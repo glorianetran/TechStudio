@@ -1,125 +1,121 @@
 <!-- Header -->
-<header>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12 text-center">
-        <h2 class="section-heading text-uppercase">Manage <%= @project.title %></h2>
-      </div>
-    </div>
-  </div>
-</header>
 
-<div class="container">
-  <ul id="tabs" class="nav nav-tabs" role="tablist">
-    <li class="nav-item">
-        <button class="btn btn-link collapsed" data-toggle="collapse" data-parent="#accordion" href="#potentials">
-        Manage Potentials</button>
-    </li>
-    
-    <li class="nav-item">
-<button class="btn btn-link collapsed" data-toggle="collapse" data-parent="#accordion" href="#collaborators">
-        Manage Collaborators</button>
-    </li>
-  </ul>
-  </div>
+<div class="account-header">
+  <h2 class="account-heading text-uppercase">Manage <%= @project.title %></h2>
 </div>
 
-
-<div class="panel-group" id="accordion">
-  <div class="panel">
-    <div id="potentials" class="panel-collapse collapse">
-      <div class="panel-body">
-        <div class="project-table-list">
-          <table id="projects">
-            <tbody>
-              <% if @project.potentials.length == 0 %>
-                No potential users.
-              <% end %>
-              <% @project.potentials.each do |p| %>
-                <tr>
-                  <td>
-                    <%= link_to p.name, user_path(p)  %>
-                  </td>
-                  <td>
-                    <%= button_to "Approve", approve_path(@project, :user => p), :method => :post, class: "btn-primary" %>
-                  </td>
-                  <td>
-                    <%= button_to "Reject", reject_path(@project, :user => p), :method => :post, class: "btn-primary btn-caution" %>
-                  </td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="panel">
-    <div id="collaborators" class="panel-collapse collapse">
-      <div class="panel-body">
-        <div class="project-table-list">
-          <table id="projects">
-            <tbody>
-              <% if @project.collaborators.length <= 1 %>
-                You are the only collaborator. Find some friends!
-              <% end %>
-              <% @project.collaborators.each do |c| %>
-                <tr>
-                  <td>
-                    <%= link_to c.name, user_path(c)  %>
-                  </td>
-                  <td>
-                    <% if c == @project.creator %>
-                      Project creator
-                    <% else %>
-                      <%= button_to "Delete", delete_collaborator_path(@project, :user => c), :method => :post, class: "btn-primary" %>
-                    <% end %>
-                  </td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<%= form_for @project do |f| %>
-  <% if @project.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
-      <ul>
-      <% @project.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<div class="account-container">
   
-  <div class="new-project">
-        <center><h3 class="section-heading text-uppercase">Edit Project</h3> </center>
-    <div class="form-group">
-      <%= f.label :title %><br />
-      <%= f.text_field :title, class: 'form-control formFields' %>
-    </div>
-    <div class="form-group">
-      <%= f.label :summary %><br />
-      <%= f.text_field :summary, class: 'form-control formFields', maxlength: 50 %>
-    </div>
-    <div class="form-group">
-      <%= f.label :description, "Description" %><br />
-      <%= f.text_area :description, class: 'form-control formFields', rows: 5, maxlength: 500 %>
-    </div>
-    <div class="form-group">
-        <%= f.label :project_type, "Project Type" %><br />
-        <%= f.select :project_type, ['Hobby', 'Academic', 'Startup'], {}, class: 'form-control formFields'%>
-    </div>
-    <div class="form-group">
-      <%= f.label :tag_list, "Tags (separated by commas)" %><br />
-      <%= f.text_field :tag_list, class: 'form-control formFields' %>
-    </div>
-    <center><%= f.submit "Update project", class: "btn btn-primary js-scroll-triggery"%>
-  <% end %>
+<div class="tab" role="tabpanel">
+	<ul class="nav nav-tabs" role="tablist">
+		<li role="presentation" class="active"><a href="#edit" aria-controls="1" role="tab" data-toggle="tab">Edit Projects</a></li>
+		<li role="presentation"><a href="#potentials" aria-controls="2" role="tab" data-toggle="tab">Manage Potentials</a></li>
+		<li role="presentation"><a href="#collaborators" aria-controls="3" role="tab" data-toggle="tab">Manage Collaborators</a></li>
+	</ul>
+	
+	<div class="tab-content">
+	  
+		<div role="tabpanel" class="tab-pane fade in active" id="edit">
+			<%= form_for @project do |f| %>
+			<% if @project.errors.any? %>
+			<div id="error_explanation">
+				<h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
+				<ul>
+					<% @project.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+					<% end %>
+				</ul>
+			</div>
+			<% end %>
+			
+			<h2 class="column-title" style="text-align:center; margin-top: 2em ">EDIT PROJECT</h2>
+			
+			<div class="new-project">
+				<div class="form-group">
+					<%= f.label :title %><br/>
+					<%= f.text_field :title, class: 'form-control formFields' %>
+				</div>
+				<div class="form-group">
+					<%= f.label :summary %><br/>
+					<%= f.text_field :summary, class: 'form-control formFields', maxlength: 50 %>
+				</div>
+				<div class="form-group">
+					<%= f.label :description, "Description" %><br/>
+					<%= f.text_area :description, class: 'form-control formFields', rows: 5, maxlength: 500 %>
+				</div>
+				<div class="form-group">
+					<%= f.label :project_type, "Project Type" %><br/>
+					<%= f.select :project_type, ['Hobby', 'Academic', 'Startup'], {}, class: 'form-control formFields'%>
+				</div>
+				<div class="form-group">
+					<%= f.label :tag_list, "Tags (separated by commas)" %><br/>
+					<%= f.text_field :tag_list, class: 'form-control formFields' %>
+				</div>
+				<center>
+				  <%= f.submit "update project", class: "account-btn btn-primary js-scroll-trigger"%>
+				  <% end %>
+				</center>
+			</div>
+			
+		</div>
+		
+		
+		<div role="tabpanel" class="tab-pane fade in" id="potentials">
+			<div class="project-table-list">
+				<table id="projects">
+					<tbody>
+						<% if @project.potentials.length == 0 %>
+						<h3 style="text-align:center; color:gray">No potential collaborators</h3>
+						<% end %>
+						<% @project.potentials.each do |p| %>
+						<tr>
+							<td>
+								<%= link_to p.name, user_path(p)  %>
+							</td>
+							<td>
+								<%= button_to "Approve", approve_path(@project, :user => p), :method => :post, class: "account-btn btn-primary js-scroll-trigger" %>
+							</td>
+							<td>
+								<%= button_to "Reject", reject_path(@project, :user => p), :method => :post, class: "account-btn btn-primary js-scroll-trigger" %>
+							</td>
+						</tr>
+						<% end %>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		
+		
+		<div role="tabpanel" class="tab-pane fade in" id="collaborators">
+			<div class="project-table-list">
+				<table id="projects">
+					<tbody>
+						<% if @project.collaborators.length <= 1 %>
+  						<h3 style="text-align:center; color:gray">You are the only collaborator. Go find some friends!</h3>
+						<% end %>
+						<% @project.collaborators.each do |c| %>
+						<tr>
+							<td>
+								<%= link_to c.name, user_path(c)  %>
+							</td>
+							<td>
+								<% if c == @project.creator %>
+								Project creator
+								<% else %>
+								<%= button_to "Delete", delete_collaborator_path(@project, :user => c), :method => :post, class: "account-btn btn-primary js-scroll-trigger" %>
+								<% end %>
+							</td>
+						</tr>
+						<% end %>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		
+		
+	</div>
 </div>
+</div>
+
+
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
