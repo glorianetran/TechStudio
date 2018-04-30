@@ -1,58 +1,63 @@
-<div class="container">
-  <div class="project-style-div">
-<center><h1><%= @project.title %></h1></center>
-<div align="right">
-    <% if current_user%>
-      <% if @project.creator == current_user %>
-        <%= button_to "Manage project", edit_project_path(@project), :method => :get, class: "btn-primary" %>
-      <%else%>
-        <% if @project.collaborators.where(id: current_user).any?  %>
-          <%= button_to "Retract collab",delete_collaborator_path(@project, :user => current_user), :method => :post, data: {confirm: "Are you sure you don't want to be a collaborator?"}, class: "btn-default" %>
-        <% elsif @project.potentials.where(id: current_user).any?  %>
-          <%= button_to "Retract request",reject_path(@project, :user => current_user), :method => :post, class: "btn-default" %>
-        <% elsif @project.collaborators.where(id: current_user).empty? %>
-          <%= button_to "Request to collaborate", request_collab_path(@project), :method => :post, class: "btn-primary" %>
-        <%end%>
-        <%end%>
-    <%else%>
-      Sign in to collaborate
-    <%end%>
-  </div>
-<div align="left" style="color:gray">Created <%= @project.created_at.strftime("%m-%d-%Y") %></div>
-<div align="left">Creator: <%= link_to @project.creator.name, user_path(@project.creator) %></div>
-<div align="left">Collaborators: <%= raw @project.collaborators.map { |c| link_to c.name, user_path(c) }.join(', ') %></div>
-<div align="left">Project Type: <%= @project.project_type %></div>
-<div align="left">Tags: <%= raw @project.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %></div>
-
-<hr/>
-<center><%= simple_format @project.description %></center>
-</br>
-<hr/>
+<div class="account-header">
+  <h2 class="account-heading text-uppercase"><%= @project.title %></h2>
 </div>
-<br>
-
-<div class="Absolute-Center-Project is-Responsive">
-<div id="disqus_thread"></div>
-<script>
-
-/**
-*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-/*
-var disqus_config = function () {
-this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-};
-*/
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = 'https://tech-studio.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-                            
-
-</div>
+  
+<div class="project-info-container">
+	  
+		
+		<div align="right">
+			<% if current_user%>
+			  <% if @project.creator == current_user %>
+  	  		<%= button_to "Manage project", edit_project_path(@project), :method => :get, class: "account-btn btn-primary js-scroll-trigger" %>
+	   		<%else%>
+		    	<% if @project.collaborators.where(id: current_user).any?  %>
+			      <%= button_to "Retract collab",delete_collaborator_path(@project, :user => current_user), :method => :post, data: {confirm: "Are you sure you don't want to be a collaborator?"}, class: "account-btn btn-primary js-scroll-trigger" %>
+    			<% elsif @project.potentials.where(id: current_user).any?  %>
+		      	<%= button_to "Retract request",reject_path(@project, :user => current_user), :method => :post, class: "account-btn btn-primary js-scroll-trigger" %>
+	    		<% elsif @project.collaborators.where(id: current_user).empty? %>
+      			<%= button_to "Request to collaborate", request_collab_path(@project), :method => :post, class: "account-btn btn-primary js-scroll-trigger" %>
+    			<%end%>
+	  		<%end%>
+	  	<%else%>
+	  		Sign in to collaborate
+		  <%end%>
+		</div>
+		
+		
+		<div class="project-info" style="color:gray">Created <%= @project.created_at.strftime("%m-%d-%Y") %></div>
+		<div class="project-info">Creator: <%= link_to @project.creator.name, user_path(@project.creator) %></div>
+		<div class="project-info">Collaborators: <%= raw @project.collaborators.map { |c| link_to c.name, user_path(c) }.join(', ') %></div>
+		<div class="project-info">Project Type: <%= @project.project_type %></div>
+		<div class="project-info">Tags: <%= raw @project.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %></div>
+		</br>
+		<hr/>
+		</br>
+		<center><%= simple_format @project.description %></center>
+		</br>
+		<hr/>
+	</div>
+	
+	</br>
+	</br>
+	<div class="project-info-container">
+		<div id="disqus_thread"></div>
+		<script>
+			/**
+			*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+			*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+			/*
+			var disqus_config = function () {
+			this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+			this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+			};
+			*/
+			(function() { // DON'T EDIT BELOW THIS LINE
+			var d = document, s = d.createElement('script');
+			s.src = 'https://tech-studio.disqus.com/embed.js';
+			s.setAttribute('data-timestamp', +new Date());
+			(d.head || d.body).appendChild(s);
+			})();
+		</script>
+		<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+	</div>
 </div>

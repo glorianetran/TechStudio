@@ -1,1 +1,8 @@
-<div><strong><%= message.user.name %>:</strong> <%= message.body %> </div>
+<div class= "message-style-div">
+<strong><%= message.user.name %>:</strong>
+
+<%= message.body %> 
+
+<div style = "float: right; color: gray;">Posted: <%= message.created_at.strftime("%H:%M")%> GTM (<%= message.created_at.strftime("%m-%d-%Y")%>)</div>
+<hr> 
+</div> 

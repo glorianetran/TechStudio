@@ -6,13 +6,17 @@
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
   </head>
 
   <!-- NAVBAR -->
   <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a class="navbar-brand" href="/">TechStudio</a>
+        <div class="navbar-brand">TechStudio</div>
       </div>
       
       <ul class="nav navbar-nav navbar-test">
@@ -24,18 +28,16 @@
         <% end %>
       </ul>
       
-      <% if current_user %>
-        <ul class="nav navbar-right">
-          <li><%= link_to "Sign out", signout_path, id: "sign_out" %></li>
+      
+        <ul class="nav navbar-nav navbar-test" style="float: right">
+          <% if current_user %>
+            <li><%= link_to "My Account", user_path(current_user) %></li>
+            <li><%= link_to "Sign out", signout_path, id: "sign_out" %></li>
+          <% else %>
+            <li><%= link_to"Sign in with Google", "/auth/google_oauth2", id: "sign_in" %></li>
+          <% end %>
         </ul>
-        <ul class="nav navbar-right">
-          <li><%= link_to "My Account", user_path(current_user) %></li>
-        </ul>
-      <% else %>
-        <ul class="nav navbar-right">
-          <li><%= link_to"Sign in with Google", "/auth/google_oauth2", id: "sign_in" %></li>
-        </ul>
-      <% end %>
+      
     </div>
   </nav>
 
@@ -43,24 +45,26 @@
   <body>
     <center>
     <div style="height:5em;" class="span12"></div>
-    <div class= "notice">
+    
+    
       <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, id: "flash_#{name}" %>
+        <div class= "alert alert-info alert-dismissible fade in">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <%= content_tag :div, msg, id: "flash_#{name}" %>
+        </div>
       <% end %>
-    </div>
+
+    
+    
     </center>
     <div>
       <%= yield %>
     </div>
   </body>
   
-<!-- FOOTER -->
-  <footer>
-    <br>
-    <div class="row-footer">
-        <span class="copyright">Copyright &copy; TECHSTUDIO 2018 </span>
-    </div>
-  </footer>
+  
+  
 
-
+<div style="height:2em;" class="span12"></div>  
+  
 </html>

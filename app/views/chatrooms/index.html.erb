@@ -1,18 +1,32 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-2" style="position: fixed; top: 70px; left: 0;">
-    <% if current_user %>
-      <h5>Chatrooms</h5>
-      <ul>
-        <% current_user.chatrooms.each do |chatroom| %>
-          <li><%= link_to chatroom.name, chatroom_path(chatroom), data: {behavior: "chatroom-link", chatroom_id: chatroom.id} %></li>
-        <% end %> 
-      </ul>
-    <% end %> 
-    </div>
-    <div class="col-sm-10 col-sm-offset-2">
-      <h1>Chatrooms</h1><br>
-      <h2>Put something here.</h2>
-    </div>
+
+  <div class="project-header">
+    <h2 class="project-heading text-uppercase">Chatrooms</h2>
+    <h3 class="project-text">
+      Each project you create comes with a chatroom.<br/>
+      Chat with your collaborators and get started on your project.<br/>
+      Ready, set, collab!<br/>
   </div>
-</div>
+
+
+
+    <div class="project-table-list-container">
+    <div class="project-table-list">
+        <table id="chatrooms">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Creator</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @chatrooms.each do |chatroom| %>
+                <tr>
+                  <td><%= chatroom.name %></td>
+                  <td><%= link_to 'Chat', chatroom %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+        </table>
+    </div>
+      

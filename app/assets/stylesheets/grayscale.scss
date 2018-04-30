@@ -1,14 +1,16 @@
 @import 'variables.scss';
 @import 'mixins.scss';
-
 @import 'https://fonts.googleapis.com/css?family=Inconsolata';
 @import 'https://fonts.googleapis.com/css?family=Source+Sans+Pro';
 
-$emerald: #009874;
+$emerald: #4cc9a4;
+// #009874
 $dark: #0c0c0c ;
 $darkgray: #848484;
 $darkergray: #2b2b2b;
 $graytext: #424242;
+$graybackground: #f2f2f2;
+$softwhite: #fefefe;
 
 body {
   font-family: 'Inconsolata';
@@ -16,9 +18,10 @@ body {
   width: 100%;
   height: 100%;
   color: $graytext;
-  background-color: #f2f2f2;
-  a{ color: $graytext; }
-   a:hover{ color: $emerald; }
+  background-color: $graybackground;
+  // overflow: hidden;
+  a { color: $graytext; }
+  a:hover{ color: $emerald; }
 }
 
 html {
@@ -26,13 +29,12 @@ html {
   height: 100%;
 }
 
-h1, h2, h3, h4, p {
-  margin: 0em;
-}
+h1, h2, h3, h4, p { margin: 0em;}
 
 p {
-  font-size: 1em;
+  font-size: 1.1em;
   line-height: 1.5;
+  font-weight: 500;
 }
 
 a {
@@ -47,6 +49,8 @@ a {
     color: darken($emerald, 50%);
   }
 }
+
+a:hover,a:focus{text-decoration: none;}
 
 
 
@@ -66,14 +70,6 @@ a {
     margin-left: -1em;
   }
   
-  .navbar-nav{
-    float: left;
-  }
-  .navbar-right {
-    float: right;
-    color: white;
-  }
-  
   @media(min-width:62em) {
     padding-top: 1.250em;
     padding-bottom: 1.250em;
@@ -91,25 +87,20 @@ a {
   }
 }
 
+.navbar-default .navbar-brand, .navbar-default .navbar-brand:hover { color: $emerald;}
+
 .navbar-default {
   background-color: $dark; // navbar color
-  border-color: $dark;    // narbar bottom border color
+  border: none;
   font-size: 1.15em;      // changes navbar font size
-    
 }
 
-
-.navbar .brand, .navbar .nav > li > a:hover {
+.navbar .nav > li > a:hover {
   color: $emerald;
   background-color: transparent;
 }
 
 .navbar-default .navbar-nav > li > a {
-  color: #fff;
-  font-family: 'Source Sans Pro';
-}
-
-.nav > li > a {
   color: white;
   font-family: 'Source Sans Pro';
 }
@@ -122,38 +113,19 @@ a {
 
 /* ---------- HOMESPREAD ---------- */
 .masthead {
-  display: table;
   width: 100%;
   height: 100%;
   text-align: center;
-  color: #848484;
-  background-color: black;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
   background-size: cover;
   .intro-body {
-    display: table-cell;
-    vertical-align: middle;
-    .brand-heading {
-      font-size: 3.125em;
-    }
     .intro-text {
       font-size: 1.125em;
       color: $graytext;
     }
   }
-  @media(min-width:768px) {
+  @media(min-width: 48em) {
     height: 100%;
     padding: 0;
-    .intro-body {
-      .brand-heading {
-        font-size: 6.250em;
-      }
-      .intro-text {
-        font-size: 1.375em;
-      }
-    }
   }
 }
 
@@ -161,11 +133,8 @@ header.masthead {
   text-align: center;
   color: white;
   height: 30%;
-  margin: 0em 0em 12em 0em;
+  margin: 5em 0em 12em 0em;
   background-image: url("/images/background3-5.jpg");
-  background-repeat: no-repeat;
-  background-attachment: scroll;
-  background-position: center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -208,7 +177,26 @@ header.masthead {
   padding: 1em 3em;
   margin: auto;
 }
-.btn-primary {
+
+.account-btn {
+  padding: 0.3em 1em;
+  border-radius: 0.25em;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.account-table-btn{
+  padding: 0.3em 1em;
+  border-radius: 0.25em;
+  font-size: 1em;
+  font-weight: bold;
+  font-family: "Inconsolata";
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-primary{
   background-color: rgba(0, 0, 0, 0.7);
   border-color: transparent;
 }
@@ -217,18 +205,16 @@ header.masthead {
   border-color: transparent;
   color: white;
 }
-.btn-primary:active{
-  box-shadow: 0.2em rgba(0, 152, 116, 1) !important;
-}
+.btn-primary:active { box-shadow: 0.2em rgba(0, 152, 116, 1) !important;}
 
-.btn-link{
-  color:$emerald;
-}
+.btn-link{ color:$emerald;}
 
 .btn-caution:hover{
   background-color: red;
   color: black;
 }
+
+
 /* ---------- BUTTON ---------- */
 
 
@@ -243,9 +229,8 @@ h4.column-heading, h2.column-title {
   margin-bottom: 2em;
 }
 
-h4.column-heading {
-  font-size: 1.3em;
-}
+h4.column-heading { font-size: 1.3em;}
+
 h2.column-title {
   font-size: 2em;
   letter-spacing: 0.2em;
@@ -270,37 +255,10 @@ h2.column-title {
 
 
 
-/* ---------- FOOTER ---------- */
-footer {
-  p {
-    font-size: 1em;
-    margin: 0;
-  }
-  position: relative;
-  bottom: 0;
-  width: 80%;
-  margin: auto;
-  margin-bottom: 2em;
-  margin-top: 2em;
-}
-
-.row-footer {
-  position: absolute;
-  width: 100%;
-}
-
-.container-footer-right {
-  text-align: right;
-}
-/* ---------- FOOTER ---------- */
-
-
-
-
 
 /* ---------- ABOUT ---------- */
 .about-header {
-  margin-top: 10em;
+  margin-top: 6em;
   text-align: center;
   margin-bottom: 9em;
 }
@@ -311,15 +269,13 @@ footer {
 }
 .about-text{
   font-size: 1em;
+  font-weight: 500;
   letter-spacing: 0.2em;
-  line-height: 2.5em;
+  line-height: 2em;
 }
 
+.about-team{ text-align: center}
 
-  
-.about-team{
-  text-align: center
-}
 .about-subheading{
   font-size: 1.25em;
   letter-spacing: 0.2em;
@@ -327,13 +283,12 @@ footer {
   margin-bottom: 2em;
 }
 
-
-
 .about-container-profile{
   margin: auto;
   width: 50%;
   padding-bottom: 8em;
 }
+
 .about-profile{
   padding: 4em 2em;
   overflow: hidden;
@@ -350,15 +305,16 @@ footer {
   font-size: 2em;
   padding-bottom: 0.25em;
 }
+
 .about-job{
   font-size: 1.5em;
   padding-bottom: 1em;
 }
+
 .about-body{
   font-size: 1.1em;
   padding-bottom: 1em;
 }
-
 /* ---------- ABOUT ---------- */
 
 
@@ -367,7 +323,7 @@ footer {
 
 /* ---------- PROJECTS FILTER ---------- */
 .project-header {
-  margin-top: 10em;
+  margin-top: 6em;
   text-align: center;
   margin-bottom: 7em;
 }
@@ -380,6 +336,7 @@ footer {
   font-size: 1em;
   letter-spacing: 0.2em;
   line-height: 2em;
+  font-weight: 500;
 }
 
 .project-table-filter {
@@ -387,7 +344,7 @@ footer {
   margin-bottom: 2em;
   width: 60%;
   border-radius: 0.4em;
-  background-color: #e9ebee;
+  background-color: $softwhite;
   border: 0.11em solid $emerald;
   min-width: 50em;
   padding: 2em;
@@ -402,25 +359,23 @@ footer {
   margin: 2em;
   padding: 1em 0em;
 }
-#tag_cloud .s {
-  font-size: 0.8em;
-}
-#tag_cloud .m {
-  font-size: 1.2em;
-}
-#tag_cloud .l {
-  font-size: 1.8em;
-}
+#tag_cloud .s { font-size: 0.8em;}
+#tag_cloud .m { font-size: 1.2em;}
+#tag_cloud .l { font-size: 1.8em;}
 /* ---------- PROJECTS FILTER ---------- */
 
 
 /* ---------- PROJECTS TABLE ---------- */
+.project-table-list-container{
+  width: 80%;
+  margin: auto;
+}
+
 .project-table-list{
   margin: auto;
   border-radius: 0.4em;
-  border: 0.1em solid $graytext;
-  background-color: #e9ebee;
-  width: 80%;
+  background-color: $softwhite;
+  width: 100%;
   min-width: 50em;
   padding: 0.5em;
   a { 
@@ -443,7 +398,8 @@ th {
   background-color: $graytext;
   text-align: center;
   padding: 0.6em;
-  letter-spacing: 0.3em;
+  letter-spacing: 0.2em;
+  font-weight: 300;
   text-transform: uppercase;
 }
 
@@ -453,9 +409,11 @@ td{
   padding: 1.5em;
 }
 
-tr:nth-child(even) {
-    background-color:  #dee0e2;
+tr {
+  width: 100%;
 }
+
+tr:nth-child(even) { background-color:  $graybackground;}
 /* ---------- PROJECTS TABLE ---------- */
 
 
@@ -465,25 +423,20 @@ tr:nth-child(even) {
 
 .new-project{
   margin: auto;
-  border-radius: 0.4em;
-  border: 0.1em solid $graytext;
-  background-color: #e9ebee;
-  width: 80%;
+  margin-bottom: 1em;
+  background-color: $softwhite;
+  width: 75%;
   min-width: 50em;
-  padding: 0.5em;
-  color: black;
-  a { 
-    text-decoration: underline;
-    font-weight: bold;
-  }
+  padding: 1em;
+  color: $graytext;
 }
 
-.formFields { 
-  background-color: #e0e0e0 !important;
-}
+.formFields { background-color: #e0e0e0 !important;}
 
-.form-group {
+.form-group { 
   margin: 2em 1em;
+  font-size: 1.1em;
+  text-transform: uppercase;
 }
 
 /*Changes the color of the placeholder text for each browser type*/
@@ -512,33 +465,35 @@ tr:nth-child(even) {
   }
 }
 
-.formFields { 
-  background-color: #e0e0e0 !important;
-}
+.formFields { background-color: #e0e0e0 !important;}
 
-.form-group {
-  margin: 2em 1em;
-}
-
-/*Changes the color of the placeholder text for each browser type*/
-.form-control::-webkit-input-placeholder { color: $graytext; }  /* WebKit, Blink, Edge */
-.form-control:-moz-placeholder { color: $graytext; }  /* Mozilla Firefox 4 to 18 */
-.form-control::-moz-placeholder { color: $graytext; }  /* Mozilla Firefox 19+ */
-.form-control:-ms-input-placeholder { color: $graytext; }  /* Internet Explorer 10-11 */
-.form-control::-ms-input-placeholder { color: $graytext; }  /* Microsoft Edge */
 /* ---------- Profile FORM ---------- */
 
 
-/* ---------- Individual Project style ---------- */
+/* ---------- ACCOUNT ---------- */
+.account-container {
+  width: 80%;
+  height: 100%;
+  margin: auto;
+  margin-bottom: 2em;
+}
 
-.project-style-div{
+.account-header {
+  margin-top: 6em;
+  text-align: center;
+  margin-bottom: 4em;
+}
+.account-heading {
+  font-size: 3em;
+  letter-spacing: 0.5em;
+  margin-bottom: 1em;
+}
+
+.account-bio{
   margin: auto;
   border-radius: 0.4em;
-  border: 0.1em solid $graytext;
-  background-color: #e9ebee;
-  width: 80%;
   min-width: 70em;
-  padding: 0.5em;
+  padding: 1em;
   color: black;
   a { 
     text-decoration: underline;
@@ -546,42 +501,96 @@ tr:nth-child(even) {
   }
 }
 
-.formFields { 
-  background-color: #e0e0e0 !important;
+.tab { 
+  border-radius: 0.25em;
 }
 
-.form-group {
-  margin: 2em 1em;
+.tab .nav-tabs{border-bottom: none;}
+
+.tab .nav-tabs li a{
+  padding: 1em 2em;
+  font-size: 1.2em;
+  font-weight: 600;
+  color: $graytext;
+  border-radius: 0.25em;
+  text-transform: uppercase;
+  border: none;
+  transition: all 0.5s ease 0s;
 }
 
-/*Changes the color of the placeholder text for each browser type*/
-.form-control::-webkit-input-placeholder { color: $graytext; }  /* WebKit, Blink, Edge */
-.form-control:-moz-placeholder { color: $graytext; }  /* Mozilla Firefox 4 to 18 */
-.form-control::-moz-placeholder { color: $graytext; }  /* Mozilla Firefox 19+ */
-.form-control:-ms-input-placeholder { color: $graytext; }  /* Internet Explorer 10-11 */
-.form-control::-ms-input-placeholder { color: $graytext; }  /* Microsoft Edge */
+.tab .nav-tabs li a:hover{background: $softwhite;}
+
+.tab .nav-tabs li{margin-right: 1.5em;}
+
+.tab .nav-tabs li a:before{ // gray line
+  content: "";
+  width: 100%;
+  height: 1px;
+  background: rgba(0,0,0, 0.2);
+  position: absolute;
+  bottom: 0.3em;
+  left: 0;
+  transform: scale(0);
+  transition: all 700ms ease 0s;
+}
+.tab .nav-tabs li a:after{
+  content: "";
+  width: 0.4375em;
+  height: 0.4375em;
+  border-radius: 50%;
+  background: $emerald;
+  margin: 0 auto;
+  position: absolute;
+  bottom: 0.125em;
+  left: 0;
+  right: 0;
+  transform: scale(0);
+  transition: all 700ms ease 0s;
+}
+.tab .nav-tabs li.active a,
+.tab .nav-tabs li.active a:focus,
+.tab .nav-tabs li.active a:hover{
+  border: none;
+  color: $emerald;
+}
+.tab .nav-tabs li a:hover:before,
+.tab .nav-tabs li.active a:before,
+.tab .nav-tabs li a:hover:after,
+.tab .nav-tabs li.active a:after{
+  transform: scale(1);
+}
+.tab .tab-content{
+  padding: 1.25em;
+  background: $softwhite;
+  font-size: 1em;
+  color: $graybackground;
+  line-height: 1.625em;
+}
+
+.formFields { background-color: #e0e0e0 !important;}
+
 /* ---------- Individual Project style ---------- */
+
+
 
 
 /* ---------- Accordian Style ---------- */
 .panel-body {
-  
   background-color: #f2f2f2;
   color: black;
-  
 }
-
 /* ---------- Accordian Style ---------- */
 
 
 
 /* ---------- Flash Style ---------- */
-.notice {
-    color: $emerald;
-    style: bold;
+.alert {
+  color: black;
+  background: $emerald;
+  font-size: 1.2em;
+  width: 50%;
+  font-weight: bold;
 }
-
-
 /* ---------- Flash Style ---------- */
 
 
@@ -591,7 +600,7 @@ tr:nth-child(even) {
 
 
 
-hr {
+hr { // emerald line
   display: block;
   height: 0.063em;
   border-top: 0.063em solid $emerald;
@@ -600,12 +609,12 @@ hr {
 
 ::-moz-selection {
   background: #fcfcfc;
-  background: fade-out(white, .8);
+  background: fade-out($softwhite, .8);
   text-shadow: none;
 }
 ::selection {
   background: #fcfcfc;
-  background: fade-out(white, .8);
+  background: fade-out($softwhite, .8);
   text-shadow: none;
 }
 img::selection {
@@ -620,3 +629,93 @@ a#sign_in {
    a:hover{ color: $emerald; }
 }
 
+
+
+
+/* ---------- Chatroom sidebar style ---------- */
+.sidenav {
+    position: fixed;
+    background: #dee0e2;
+    font-size: 1.2em;
+    padding: 8px 0;
+    top: 70px; left: 70px;
+    margin:auto;
+}
+
+.sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 1.1em;
+    display: block;
+    color: $emerald;
+}
+
+.sidenav li {
+  color: $emerald;
+}
+
+.sidenav a:hover {
+    color: $emerald;
+}
+
+.main {
+    margin-left: 140px; /* Same width as the sidebar + left position in px */
+    font-size: 28px; /* Increased text to enable scrolling */
+    padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+/* ---------- Chatroom sidebar style ---------- */
+
+
+/* ---------- Chatroom chat style ---------- */
+
+.chatroom-style-div{
+  margin: 1em 20em 20em 1em;
+  border-radius: 0.4em;
+  border: 0.1em solid $graytext;
+  background-color: #e9ebee;
+  width: 70%;
+  min-width: 50em;
+  padding: 0.5em;
+  color: black;
+  display:block;
+  a { 
+    text-decoration: underline;
+    font-weight: bold;
+  }
+  
+  hr{
+    height: 0.053em;
+    border-top: 0.03em solid gray;
+  }
+}
+
+.message-style-div{
+   hr {
+     padding: 0em;
+     margin: 1em 1em 1em 0em;
+      border-top: 0.03em solid gray;
+    }
+}
+
+/* ---------- Chatroom chat style ---------- */
+
+
+
+/* ---------- PROJECT INFO ---------- */
+
+.project-info-container {
+  width: 80%;
+  margin: auto;
+}
+
+.project-info {
+  text-align: left;
+  font-size: 1.2em;
+}
+
+/* ---------- PROJECT INFO ---------- */
