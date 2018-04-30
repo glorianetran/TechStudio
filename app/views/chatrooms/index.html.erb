@@ -20,11 +20,13 @@
             </thead>
             <tbody>
             <% @chatrooms.each do |chatroom| %>
-                <tr>
-                  <td><%= chatroom.name %></td>
-                  <td><%= link_to 'Chat', chatroom %>
-                  </td>
-                </tr>
+                <% if chatroom.project.collaborators.where(id: current_user).any? %>
+                  <tr>
+                    <td><%= chatroom.name %></td>
+                    <td><%= link_to 'Chat', chatroom_path(chatroom) %>
+                    </td>
+                  </tr>
+                <% end %>
               <% end %>
             </tbody>
         </table>
