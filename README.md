@@ -26,14 +26,15 @@ TechStudio was created for a Software Engineering course at Mills College in 201
 ### Viewing our Repo
 1. Clone repository into your environment.
 2. In the TechStudio directory run `bundle install`
-3. Populate the database: In the terminal, run ```rails db:migrate``` then ```rails db:seed```
-4. In another terminal window, also run ```redis-server```
+3. In the terminal, run ```rails db:migrate``` then ```rails db:seed```
+4. In another terminal window, run ```redis-server```
 
 ### Project Details
 * Rails Version: 5.1.5
 * Ruby Version: 2.4.0
 * BootStrap: Twitter Bootstrap, BootStrap sass
 * Third-Party User Authentication: Google
+* Comments: Disqus
 
 ### Notes
 For security purposes, this project was created on BitBucket. 
