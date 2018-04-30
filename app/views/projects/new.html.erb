@@ -3,16 +3,16 @@
 <%= csrf_meta_tags %>
 <html>
   
-	<% if @project.errors.any? %>
-  	<div id="error_explanation">
-	  	<h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
-  		<ul>
-	  		<% @project.errors.full_messages.each do |msg| %>
-	    		<li><%= msg %></li>
-	  		<% end %>
-  		</ul>
-  	</div>
-	<% end %>
+	<!--<% if @project.errors.any? %>-->
+ <!-- 	<div id="error_explanation">-->
+	<!--  	<h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>-->
+ <!-- 		<ul>-->
+	<!--  		<% @project.errors.full_messages.each do |msg| %>-->
+	<!--    		<li><%= msg %></li>-->
+	<!--  		<% end %>-->
+ <!-- 		</ul>-->
+ <!-- 	</div>-->
+	<!--<% end %>-->
 	
 	<div class="account-header">
     <h2 class="account-heading text-uppercase">CREATE NEW PROJECT</h2>
@@ -26,19 +26,19 @@
 			
 			<div class="form-row centered">
 				<div class="form-group">
-					<label for="inputEmail4">Project Title</label>
-					<input type="text" class="form-control formFields" id="inputTitle" placeholder="The name of your awesome project!" name="project[title]">
+					<label for="inputEmail4">Project Title*</label>
+					<input type="text" class="form-control formFields" id="inputTitle" placeholder="The name of your awesome project!" name="project[title]" required>
 				</div>
 			</div>
 			
 			<div class="form-group">
-				<label for="inputSummary">Summary</label>
-				<input type="text" class="form-control formFields" id="inputSummary" placeholder="Short summary of your project (max 50 characters)" maxlength="50" name="project[summary]">
+				<label for="inputSummary">Summary*</label>
+				<input type="text" class="form-control formFields" id="inputSummary" placeholder="Short summary of your project (max 50 characters)" maxlength="50" name="project[summary]" required>
 			</div>
 			
 			<div class="form-group">
-				<label for="inputDescription">Description</label>
-				<textarea class="form-control formFields" rows="5" placeholder="A longer description of your project (max 500 characters)" id="inputDescription" maxlength="500" name="project[description]"></textarea>
+				<label for="inputDescription">Description*</label>
+				<textarea class="form-control formFields" rows="5" placeholder="A longer description of your project (max 500 characters)" id="inputDescription" maxlength="500" name="project[description]" required></textarea>
 			</div>
 			
 			<div class="form-row centered">
