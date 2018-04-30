@@ -92,6 +92,7 @@
 					<tbody>
 						<% if @project.collaborators.length <= 1 %>
   						<h3 style="text-align:center; color:gray">You are the only collaborator. Go find some friends!</h3>
+  						</br>
 						<% end %>
 						<% @project.collaborators.each do |c| %>
 						<tr>

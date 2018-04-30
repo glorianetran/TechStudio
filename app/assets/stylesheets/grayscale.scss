@@ -262,7 +262,7 @@ h2.column-title {
 
 /* ---------- ABOUT ---------- */
 .about-header {
-  margin-top: 10em;
+  margin-top: 6em;
   text-align: center;
   margin-bottom: 9em;
 }
@@ -327,7 +327,7 @@ h2.column-title {
 
 /* ---------- PROJECTS FILTER ---------- */
 .project-header {
-  margin-top: 10em;
+  margin-top: 6em;
   text-align: center;
   margin-bottom: 7em;
 }
@@ -707,3 +707,19 @@ a#sign_in {
 }
 
 /* ---------- Chatroom chat style ---------- */
+
+
+
+/* ---------- PROJECT INFO ---------- */
+
+.project-info-container {
+  width: 80%;
+  margin: auto;
+}
+
+.project-info {
+  text-align: left;
+  font-size: 1.2em;
+}
+
+/* ---------- PROJECT INFO ---------- */
