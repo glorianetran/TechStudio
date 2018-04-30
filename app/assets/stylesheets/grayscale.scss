@@ -632,15 +632,38 @@ a#sign_in {
 
 
 
+
 /* ---------- Chatroom sidebar style ---------- */
 .sidenav {
     position: fixed;
-    background: #dee0e2;
+    background: white;
     font-size: 1.2em;
-    padding: 8px 0;
-    top: 70px; left: 70px;
+    padding: 1em 1em 1em 1em;
+    padding-bottom: 1em;
+    top: 4.375em; 
+    left: 4.375em;
     margin:auto;
+    max-width: 15em;
+    max-height: 30em;
+    overflow:hidden;
+    border-radius: 0.4em;
+    
+    .otherchatrooms{
+    max-height: 15em;
+      overflow-y: scroll;
+    }
+    
+    h3{
+      background-color: #424242; 
+      color: white;
+      text-align: center;
+    }
+    
 }
+
+
+
+
 
 .sidenav a {
     padding: 6px 8px 6px 16px;
@@ -651,8 +674,11 @@ a#sign_in {
 }
 
 .sidenav li {
+  
   color: $emerald;
+  
 }
+
 
 .sidenav a:hover {
     color: $emerald;
@@ -677,7 +703,7 @@ a#sign_in {
   margin: 1em 20em 20em 1em;
   border-radius: 0.4em;
   border: 0.1em solid $graytext;
-  background-color: #e9ebee;
+  background-color: white;
   width: 70%;
   min-width: 50em;
   padding: 0.5em;
@@ -703,6 +729,19 @@ a#sign_in {
 }
 
 /* ---------- Chatroom chat style ---------- */
+
+form { 
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  display: inline;
+}
+
+
+
+
+
+
 
 
 
