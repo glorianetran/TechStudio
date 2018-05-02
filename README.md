@@ -26,7 +26,7 @@ TechStudio was created for a Software Engineering course at Mills College in 201
 ### Viewing our Repo
 1. Clone repository into your environment.
 2. In the TechStudio directory run `bundle install`
-3. In the terminal, run ```rails db:migrate``` then ```rails db:seed```
+3. In the terminal, run ```rails db:migrate```
 4. In another terminal window, run ```redis-server```
 
 ### Project Details
