@@ -454,7 +454,7 @@ tr:nth-child(even) { background-color:  $graybackground;}
   margin: auto;
   border-radius: 0.4em;
   border: 0.1em solid $graytext;
-  background-color: #e9ebee;
+  background-color: $softwhite;
   width: 80%;
   min-width: 50em;
   padding: 0.5em;
@@ -492,7 +492,6 @@ tr:nth-child(even) { background-color:  $graybackground;}
 .account-bio{
   margin: auto;
   border-radius: 0.4em;
-  min-width: 70em;
   padding: 1em;
   color: black;
   a { 
